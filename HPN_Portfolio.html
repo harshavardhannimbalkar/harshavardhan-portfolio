@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshavardhan Nimbalkar — Civil Design Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --ink-mid: #2d3f50;
+    --ink-light: #5a6e80;
+    --ink-faint: #8fa0b0;
+    --paper: #f5f1eb;
+    --paper-warm: #ede8e0;
+    --paper-dark: #e0d9ce;
+    --accent: #1a4f6e;
+    --accent-bright: #0d7aa8;
+    --accent-glow: #4fb3d9;
+    --gold: #b8893a;
+    --gold-light: #d4a855;
+    --line: rgba(26,79,110,0.15);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 220px;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    padding: 48px 0;
+    z-index: 100;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-logo {
+    padding: 0 28px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+
+  .sidebar-logo .initials {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--gold-light);
+    letter-spacing: -1px;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .sidebar-logo .role-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent-glow);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links { list-style: none; flex: 1; }
+
+  .nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 28px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: var(--gold-light);
+    border-left-color: var(--gold-light);
+    background: rgba(212,168,85,0.06);
+  }
+
+  .nav-links li a .nav-icon { font-size: 14px; width: 18px; text-align: center; }
+
+  .sidebar-footer {
+    padding: 24px 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-footer a {
+    display: block;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+    word-break: break-all;
+  }
+
+  .sidebar-footer a:hover { color: var(--accent-glow); }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 220px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 72px 64px;
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink-mid) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(79,179,217,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: 'CIVIL\AENGINEER';
+    white-space: pre;
+    position: absolute;
+    right: 72px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 88px;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -4px;
+    pointer-events: none;
+    text-align: right;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent-glow);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--accent-glow);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span { color: var(--gold-light); font-style: italic; }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 36px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  .pill-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+  }
+
+  .pill-filled {
+    background: var(--accent-bright);
+    color: #fff;
+  }
+
+  .pill-gold {
+    background: rgba(184,137,58,0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--accent-glow); }
+  .contact-item .ci-icon { font-size: 14px; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 64px 72px;
+    border-bottom: 1px solid var(--line);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section:nth-child(even) { background: rgba(255,255,255,0.4); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent-bright);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--ink);
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    max-width: 680px;
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,79,110,0.1);
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+  }
+
+  .skill-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .skill-desc {
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  .skill-level {
+    margin-top: 12px;
+    height: 3px;
+    background: var(--paper-dark);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-level-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .timeline-item {
+    padding-left: 48px;
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px;
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent-bright);
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    background: rgba(184,137,58,0.1);
+    border: 1px solid rgba(184,137,58,0.25);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .timeline-org {
+    font-size: 13px;
+    color: var(--accent-bright);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .timeline-bullets { list-style: none; }
+
+  .timeline-bullets li {
+    font-size: 14px;
+    color: var(--ink-mid);
+    padding: 5px 0 5px 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+    top: 7px;
+  }
+
+  /* ── PORTFOLIO SECTION ── */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .portfolio-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(26,79,110,0.12);
+  }
+
+  .portfolio-thumb {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portfolio-thumb.autocad { background: linear-gradient(135deg, #0d2137 0%, #1a3f5c 100%); }
+  .portfolio-thumb.civil3d { background: linear-gradient(135deg, #0a2818 0%, #1a4f30 100%); }
+  .portfolio-thumb.excel { background: linear-gradient(135deg, #0f2b0a 0%, #1e5014 100%); }
+  .portfolio-thumb.msproject { background: linear-gradient(135deg, #2b0a2b 0%, #4f1450 100%); }
+  .portfolio-thumb.add-new { background: var(--paper-warm); border: 2px dashed var(--paper-dark); }
+
+  .portfolio-thumb .thumb-label {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .portfolio-thumb.add-new .thumb-label { color: var(--ink-faint); }
+
+  .portfolio-thumb .thumb-icon {
+    font-size: 40px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .portfolio-body {
+    padding: 20px 24px;
+  }
+
+  .portfolio-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+  }
+
+  .portfolio-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .portfolio-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--ink-light);
+    border-radius: 2px;
+  }
+
+  .portfolio-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-sm {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 7px 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--accent-bright); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-light);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    border: 2px dashed var(--paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    text-align: center;
+    padding: 32px;
+  }
+
+  .add-card:hover {
+    border-color: var(--accent-bright);
+    background: rgba(13,122,168,0.03);
+  }
+
+  .add-card .add-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--ink-faint);
+  }
+
+  .add-card .add-label {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink-light);
+    margin-bottom: 6px;
+  }
+
+  .add-card .add-hint {
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .edu-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .edu-institute {
+    font-size: 13px;
+    color: var(--accent-bright);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .edu-detail {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-bottom: 3px;
+  }
+
+  .edu-grade {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gold);
+    background: rgba(184,137,58,0.1);
+    border: 1px solid rgba(184,137,58,0.2);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,35,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 6px;
+    padding: 40px;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    animation: modalIn 0.25s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 2px;
+    transition: color 0.2s;
+  }
+
+  .modal-close:hover { color: var(--ink); }
+
+  .modal h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--accent-bright);
+  }
+
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .btn-full {
+    width: 100%;
+    padding: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 3px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .btn-full:hover { background: var(--accent-bright); }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .cert-detail {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  .cert-badge {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .cert-badge.done { background: rgba(26,79,110,0.1); color: var(--accent); border: 1px solid rgba(26,79,110,0.2); }
+  .cert-badge.pending { background: rgba(184,137,58,0.1); color: var(--gold); border: 1px solid rgba(184,137,58,0.2); }
+
+  /* ── PRINT BUTTON ── */
+  .print-bar {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    display: flex;
+    gap: 8px;
+    z-index: 200;
+  }
+
+  .fab {
+    padding: 12px 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .fab-primary { background: var(--accent); color: #fff; }
+  .fab-primary:hover { background: var(--accent-bright); transform: translateY(-1px); }
+  .fab-gold { background: var(--gold); color: #fff; }
+  .fab-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 80px; right: 24px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 12px 20px;
+    border-radius: 3px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s;
+    z-index: 300;
+    border-left: 3px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero, .section { padding: 40px 28px; }
+    .hero::after { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .sidebar, .print-bar, .modal-overlay, .fab, .portfolio-actions { display: none !important; }
+    .main { margin-left: 0; }
+    .section { padding: 32px 40px; break-inside: avoid; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <span class="initials">HPN</span>
+    <span class="role-tag">Civil Design</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#summary" class="active"><span class="nav-icon">◈</span>Summary</a></li>
+    <li><a href="#skills"><span class="nav-icon">◎</span>Skills</a></li>
+    <li><a href="#experience"><span class="nav-icon">◉</span>Experience</a></li>
+    <li><a href="#portfolio"><span class="nav-icon">▣</span>Portfolio</a></li>
+    <li><a href="#education"><span class="nav-icon">◐</span>Education</a></li>
+    <li><a href="#certifications"><span class="nav-icon">◆</span>Certifications</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <a href="mailto:harshavardhannimbalkar90@gmail.com">harshavardhannimbalkar90<br>@gmail.com</a>
+    <a href="tel:+919511921903">+91 9511921903</a>
+    <a href="https://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank">LinkedIn ↗</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-tag">Available for opportunities · Jalgaon, Maharashtra</div>
+    <h1>Harshavardhan<br><span>Pratap Nimbalkar</span></h1>
+    <p class="hero-sub">B.E. Civil Engineering · Civil Design & Infrastructure · AutoCAD · Civil 3D · MS Project</p>
+    <div class="hero-pills">
+      <span class="pill pill-filled">Civil Design</span>
+      <span class="pill pill-outline">AutoCAD 2018</span>
+      <span class="pill pill-outline">Civil 3D 2012</span>
+      <span class="pill pill-outline">MS Project</span>
+      <span class="pill pill-outline">MS Excel BOQ</span>
+      <span class="pill pill-gold">Open to Relocate · Pune</span>
+    </div>
+    <div class="hero-contacts">
+      <a href="mailto:harshavardhannimbalkar90@gmail.com" class="contact-item">
+        <span class="ci-icon">✉</span> harshavardhannimbalkar90@gmail.com
+      </a>
+      <a href="tel:+919511921903" class="contact-item">
+        <span class="ci-icon">☏</span> +91 9511921903
+      </a>
+      <a href="https://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank" class="contact-item">
+        <span class="ci-icon">in</span> LinkedIn Profile
+      </a>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <div class="section-label">Profile</div>
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="summary-text">
+      B.E. Civil Engineering graduate with hands-on internship experience on the PMAY-CIDCO Mass Housing Project (Package 3) executed by Shapoorji Pallonji SPE&C, Navi Mumbai. Proficient in AutoCAD 2018 and Civil 3D 2012 with a practical project portfolio covering site layout drafting, road corridor design, surface modelling, drainage pipe networks, and quantity take-off. Skilled in MS Excel BOQ preparation with VLOOKUP-linked rate libraries and PivotTable dashboards, alongside MS Project construction scheduling with critical path analysis. Targeting Civil Design and Infrastructure roles at engineering consultancies focused on residential, commercial, and site development projects — with a clear goal of growing into BIM coordination and project leadership.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid" id="skillsGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-label">Work History</div>
+    <h2 class="section-title">Experience & Projects</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-role">Site Engineering Intern</span>
+          <span class="timeline-date">2024</span>
+        </div>
+        <div class="timeline-org">CIDCO, Navi Mumbai · PMAY Mass Housing Scheme Package 3 · Shapoorji Pallonji SPE&C</div>
+        <ul class="timeline-bullets">
+          <li>Observed and documented construction activities for PMAY mass housing project comprising EWS and LIG residential blocks along the Harbour Line section, Navi Mumbai.</li>
+          <li>Assisted quality control inspections under Sandeep Shikre & Associates for RCC structural elements, brick masonry, and waterproofing works.</li>
+          <li>Recreated complete site layout in AutoCAD: road network, EWS/LIG building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
+          <li>Built existing ground surface and road corridor in Civil 3D; generated cut/fill quantity report for Package 3 grading area.</li>
+          <li>Prepared BOQ in MS Excel for earthwork, structural concrete, and finishing items using VLOOKUP rate library and PivotTable cost summary.</li>
+          <li>Developed construction schedule in MS Project; identified critical path and presented Gantt chart to project team.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-role">B.E. Final Year Research Project</span>
+          <span class="timeline-date">2024–2025</span>
+        </div>
+        <div class="timeline-org">SSBTCOET Bambhori, Jalgaon · North Maharashtra University</div>
+        <ul class="timeline-bullets">
+          <li>Designed and tested paver block mixes incorporating plastic waste (PP/HDPE) and demolition aggregate at 5%, 10%, 15%, 20% replacement levels.</li>
+          <li>Conducted compressive strength tests at 7, 14, and 28 days — optimum mix identified at 15% plastic waste replacement with maximum strength achieved.</li>
+          <li>Prepared material quantity calculations and cost-benefit analysis in MS Excel showing significant cost reduction versus conventional paver mix.</li>
+          <li>Project aligned with Swachh Bharat Mission objectives for sustainable construction waste utilization in infrastructure.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="section-label">Showcase</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <!-- Rendered by JS -->
+    </div>
+    <div style="margin-top:20px;">
+      <button class="add-card" onclick="openAddModal()">
+        <div class="add-icon">＋</div>
+        <div class="add-label">Add New Portfolio Piece</div>
+        <div class="add-hint">Click to add drawings, reports, models, or any deliverable</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="section-label">Academic</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">B.E. Civil Engineering</div>
+        <div class="edu-institute">SSBTCOET Bambhori, Jalgaon</div>
+        <div class="edu-detail">North Maharashtra University</div>
+        <div class="edu-detail">2022 – 2025</div>
+        <span class="edu-grade">7.58 CGPA</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Diploma in Civil Engineering</div>
+        <div class="edu-institute">Shri Gulabrao Deokar Polytechnic, Jalgaon</div>
+        <div class="edu-detail">MSBTE</div>
+        <div class="edu-detail">2019 – 2022</div>
+        <span class="edu-grade">75.00%</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Matriculation (SSC)</div>
+        <div class="edu-institute">Tapti Public School, Bhusawal</div>
+        <div class="edu-detail">CBSE</div>
+        <div class="edu-detail">2018 – 2019</div>
+        <span class="edu-grade">58.50%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications & Training</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <div class="cert-icon">🖊</div>
+        <div>
+          <div class="cert-name">AutoCAD 2018 — Practical Drafting</div>
+          <div class="cert-detail">180+ hours · Civil design applications · Site layout, Layers, Layouts, Plotting</div>
+        </div>
+        <span class="cert-badge done">Completed</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🗺</div>
+        <div>
+          <div class="cert-name">Civil 3D 2012 — Road & Drainage Design</div>
+          <div class="cert-detail">Self-trained · Surfaces, Alignments, Corridors, Pipe Networks, Quantity Take-off</div>
+        </div>
+        <span class="cert-badge done">Completed</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">MS Project — Construction Scheduling</div>
+          <div class="cert-detail">Gantt chart, Critical path method, Resource scheduling</div>
+        </div>
+        <span class="cert-badge done">Completed</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">Autodesk Certified User — AutoCAD</div>
+          <div class="cert-detail">Certiport exam · In preparation</div>
+        </div>
+        <span class="cert-badge pending">In Progress</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🌊</div>
+        <div>
+          <div class="cert-name">HEC-RAS — Channel Hydraulics</div>
+          <div class="cert-detail">US Army Corps of Engineers · Steady flow, cross-section analysis</div>
+        </div>
+        <span class="cert-badge pending">Learning</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ADD PORTFOLIO MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Add Portfolio Piece</h3>
+    <div class="form-group">
+      <label class="form-label">Title</label>
+      <input class="form-input" id="newTitle" placeholder="e.g. CIDCO Site Layout — AutoCAD" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="newDesc" placeholder="Briefly describe what this deliverable shows..."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="newCategory">
+          <option value="autocad">AutoCAD Drawing</option>
+          <option value="civil3d">Civil 3D Model</option>
+          <option value="excel">Excel / BOQ</option>
+          <option value="msproject">MS Project Schedule</option>
+          <option value="report">Report / Analysis</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Year</label>
+        <input class="form-input" id="newYear" placeholder="2025" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tags (comma separated)</label>
+      <input class="form-input" id="newTags" placeholder="e.g. AutoCAD, CIDCO, Site Layout, 1:500" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Link (Google Drive / PDF URL)</label>
+      <input class="form-input" id="newLink" placeholder="https://drive.google.com/..." />
+    </div>
+    <button class="btn-full" onclick="addPortfolioItem()">+ Add to Portfolio</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FABs -->
+<div class="print-bar">
+  <button class="fab fab-gold" onclick="openAddModal()">＋ Add Work</button>
+  <button class="fab fab-primary" onclick="window.print()">⎙ Print / PDF</button>
+</div>
+
+<script>
+// ── DATA ──
+const skillsData = [
+  { name: "AutoCAD 2018", desc: "2D Drafting, Layers, Blocks, Layouts, Plotting to PDF. Site plans, road layouts, building footprints.", level: 70 },
+  { name: "Civil 3D 2012", desc: "TIN Surfaces, Road Alignments, Profiles, Corridors, Pipe Networks, Quantity Take-off.", level: 55 },
+  { name: "MS Excel", desc: "BOQ preparation, VLOOKUP rate libraries, PivotTables, cost dashboards, quantity calculations.", level: 65 },
+  { name: "MS Project", desc: "Construction scheduling, Gantt charts, critical path method, resource planning.", level: 55 },
+  { name: "HEC-RAS", desc: "Basic steady-flow channel hydraulics, cross-section analysis. (In progress)", level: 20 },
+  { name: "Engineering Drawing", desc: "IS 962 standards, orthographic projection, sectional views, detail drawings.", level: 75 },
+];
+
+let portfolioData = [
+  {
+    id: 1,
+    title: "CIDCO Site Layout — AutoCAD",
+    desc: "Complete 2D site plan of CIDCO Mass Housing Package 3: site boundary, road network, EWS/LIG footprints, drainage, dimensions. Plotted A1 at 1:500.",
+    category: "autocad",
+    year: "2025",
+    tags: ["AutoCAD", "CIDCO", "Site Plan", "1:500", "PMAY"],
+    link: ""
+  },
+  {
+    id: 2,
+    title: "CIDCO Road Corridor — Civil 3D",
+    desc: "Main road design: existing ground surface, alignment, vertical profile with curves, full corridor (kerbs + footpath), and cross-section sheets.",
+    category: "civil3d",
+    year: "2025",
+    tags: ["Civil 3D", "Road Design", "Corridor", "Profile", "CIDCO"],
+    link: ""
+  },
+  {
+    id: 3,
+    title: "CIDCO BOQ & Cost Dashboard",
+    desc: "Complete BOQ workbook with VLOOKUP rate library, PivotTable summary by trade, and one-page cost dashboard with charts.",
+    category: "excel",
+    year: "2025",
+    tags: ["Excel", "BOQ", "VLOOKUP", "PivotTable", "Quantity Estimation"],
+    link: ""
+  },
+  {
+    id: 4,
+    title: "CIDCO Construction Schedule",
+    desc: "MS Project schedule for Package 3 key activities with linked tasks, critical path identified, and Gantt chart exported to PDF.",
+    category: "msproject",
+    year: "2025",
+    tags: ["MS Project", "Gantt Chart", "Critical Path", "CIDCO"],
+    link: ""
+  },
+];
+
+const categoryMeta = {
+  autocad:   { label: "AutoCAD", icon: "📐", cls: "autocad" },
+  civil3d:   { label: "Civil 3D", icon: "🗺️", cls: "civil3d" },
+  excel:     { label: "Excel", icon: "📊", cls: "excel" },
+  msproject: { label: "MS Project", icon: "📅", cls: "msproject" },
+  report:    { label: "Report", icon: "📄", cls: "civil3d" },
+  other:     { label: "Other", icon: "📁", cls: "autocad" },
+};
+
+// ── RENDER SKILLS ──
+function renderSkills() {
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = skillsData.map(s => `
+    <div class="skill-card">
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-desc">${s.desc}</div>
+      <div class="skill-level">
+        <div class="skill-level-fill" style="width:${s.level}%"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── RENDER PORTFOLIO ──
+function renderPortfolio() {
+  const grid = document.getElementById('portfolioGrid');
+  grid.innerHTML = portfolioData.map(p => {
+    const meta = categoryMeta[p.category] || categoryMeta.other;
+    const tags = p.tags.map(t => `<span class="portfolio-tag">${t}</span>`).join('');
+    const linkBtn = p.link
+      ? `<a href="${p.link}" target="_blank" class="btn-sm btn-primary">↗ View</a>`
+      : `<button class="btn-sm btn-outline" onclick="setLink(${p.id})">+ Add Link</button>`;
+    return `
+      <div class="portfolio-card">
+        <div class="portfolio-thumb ${meta.cls}">
+          <div class="thumb-label">${meta.label} · ${p.year}</div>
+          <div class="thumb-icon">${meta.icon}</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-title">${p.title}</div>
+          <div class="portfolio-desc">${p.desc}</div>
+          <div class="portfolio-tags">${tags}</div>
+          <div class="portfolio-actions">
+            ${linkBtn}
+            <button class="btn-sm btn-outline" onclick="removeItem(${p.id})">✕ Remove</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── ADD ITEM ──
+function addPortfolioItem() {
+  const title = document.getElementById('newTitle').value.trim();
+  const desc = document.getElementById('newDesc').value.trim();
+  const category = document.getElementById('newCategory').value;
+  const year = document.getElementById('newYear').value.trim() || '2025';
+  const tagsRaw = document.getElementById('newTags').value.trim();
+  const link = document.getElementById('newLink').value.trim();
+
+  if (!title) { showToast('Please enter a title'); return; }
+
+  const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+  portfolioData.push({
+    id: Date.now(),
+    title, desc, category, year, tags, link
+  });
+
+  renderPortfolio();
+  closeModal();
+  showToast('Portfolio piece added!');
+
+  // Reset
+  ['newTitle','newDesc','newYear','newTags','newLink'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('newCategory').value = 'autocad';
+}
+
+// ── SET LINK ──
+function setLink(id) {
+  const link = prompt('Paste Google Drive or PDF link:');
+  if (!link) return;
+  const item = portfolioData.find(p => p.id === id);
+  if (item) { item.link = link; renderPortfolio(); showToast('Link added!'); }
+}
+
+// ── REMOVE ITEM ──
+function removeItem(id) {
+  if (!confirm('Remove this portfolio piece?')) return;
+  portfolioData = portfolioData.filter(p => p.id !== id);
+  renderPortfolio();
+  showToast('Removed.');
+}
+
+// ── MODAL ──
+function openAddModal() { document.getElementById('addModal').classList.add('open'); }
+function closeModal() { document.getElementById('addModal').classList.remove('open'); }
+document.getElementById('addModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── ACTIVE NAV ──
+const sections = document.querySelectorAll('section[id], header');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+// ── INIT ──
+renderSkills();
+renderPortfolio();
+</script>
+</body>
+</html>
