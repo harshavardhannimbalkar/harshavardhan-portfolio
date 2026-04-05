@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harshavardhan Nimbalkar | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--accent:#3b82f6;--text:#e5e7eb;--muted:#9ca3af}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
+header{padding:40px;text-align:center;background:linear-gradient(135deg,#0f172a,#020617)}
+h1{margin:0;font-size:2.2rem}
+p{color:var(--muted)}
+.container{max-width:1000px;margin:auto;padding:20px}
+.card{background:var(--card);padding:20px;border-radius:16px;margin:15px 0;box-shadow:0 10px 25px rgba(0,0,0,.3);transition:.3s}
+.card:hover{transform:translateY(-5px)}
+button{background:var(--accent);color:white;padding:10px 15px;border:none;border-radius:8px;cursor:pointer}
+input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#020617;color:white}
+#adminPanel{display:none;background:#020617;padding:20px;border-radius:12px}
+img{max-width:100%;border-radius:10px;margin-top:10px}
+.footer{text-align:center;padding:20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+<h1 id="name"></h1>
+<p id="role"></p>
+<button onclick="toggleAdmin()">Admin Access</button>
+</header><div class="container">
+<h2>Projects</h2>
+<div id="projects"></div><div id="adminPanel">
+<h2>Admin Panel</h2>
+<input type="password" id="code" placeholder="Enter Access Code" />
+<button onclick="unlock()">Unlock</button><div id="editor" style="display:none">
+<h3>Edit Profile</h3>
+<input id="editName" placeholder="Name" />
+<input id="editRole" placeholder="Role" />
+<button onclick="updateProfile()">Update</button><h3>Add Project</h3>
+<input id="projTitle" placeholder="Title" />
+<textarea id="projDesc" placeholder="Description"></textarea>
+<input type="file" id="fileUpload" />
+<button onclick="addProject()">Add Project</button>
+</div>
+</div>
+</div><div class="footer">© 2026 Harshavardhan Nimbalkar</div><script>
+const ACCESS_CODE = "12345";
+
+// Load saved data
+let profile = JSON.parse(localStorage.getItem('profile')) || {name:"Harshavardhan Nimbalkar",role:"Civil Engineer | AutoCAD Designer"};
+let projects = JSON.parse(localStorage.getItem('projects')) || [];
+
+function save(){
+ localStorage.setItem('profile',JSON.stringify(profile));
+ localStorage.setItem('projects',JSON.stringify(projects));
+}
+
+function render(){
+ document.getElementById('name').innerText = profile.name;
+ document.getElementById('role').innerText = profile.role;
+
+ let container = document.getElementById('projects');
+ container.innerHTML = '';
+ projects.forEach((p,i)=>{
+   let div = document.createElement('div');
+   div.className='card';
+   div.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>${p.file?`<img src="${p.file}"/>`:''}<br><button onclick="deleteProject(${i})">Delete</button>`;
+   container.appendChild(div);
+ });
+}
+
+function toggleAdmin(){document.getElementById('adminPanel').style.display='block'}
+
+function unlock(){
+ let code=document.getElementById('code').value;
+ if(code===ACCESS_CODE){document.getElementById('editor').style.display='block'}
+ else alert('Wrong Code');
+}
+
+function updateProfile(){
+ profile.name=document.getElementById('editName').value;
+ profile.role=document.getElementById('editRole').value;
+ save(); render();
+}
+
+function addProject(){
+ let title=document.getElementById('projTitle').value;
+ let desc=document.getElementById('projDesc').value;
+ let fileInput=document.getElementById('fileUpload');
+ let reader=new FileReader();
+
+ if(fileInput.files[0]){
+   reader.onload=function(){
+     projects.push({title,desc,file:reader.result});
+     save(); render();
+   };
+   reader.readAsDataURL(fileInput.files[0]);
+ } else {
+   projects.push({title,desc});
+   save(); render();
+ }
+}
+
+function deleteProject(i){
+ projects.splice(i,1);
+ save(); render();
+}
+
+render();
+</script></body>
+</html>
