@@ -7,28 +7,44 @@
 <style>
 :root{--bg:#0b1220;--card:#111a2e;--accent:#3b82f6;--text:#e5e7eb;--muted:#9ca3af}
 *{box-sizing:border-box}
-body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
-header{padding:40px;text-align:center;background:linear-gradient(135deg,#0f172a,#020617)}
-h1{margin:0;font-size:2.2rem}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+header{padding:60px 20px;text-align:center;background:linear-gradient(135deg,#0f172a,#020617)}
+h1{margin:0;font-size:2.5rem}
 p{color:var(--muted)}
 .container{max-width:1000px;margin:auto;padding:20px}
-.card{background:var(--card);padding:20px;border-radius:16px;margin:15px 0;box-shadow:0 10px 25px rgba(0,0,0,.3);transition:.3s}
-.card:hover{transform:translateY(-5px)}
+.card{background:var(--card);padding:20px;border-radius:16px;margin:15px 0;box-shadow:0 10px 25px rgba(0,0,0,.3);transition:.4s}
+.card:hover{transform:translateY(-8px) scale(1.02)}
 button{background:var(--accent);color:white;padding:10px 15px;border:none;border-radius:8px;cursor:pointer}
 input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#020617;color:white}
 #adminPanel{display:none;background:#020617;padding:20px;border-radius:12px}
 img{max-width:100%;border-radius:10px;margin-top:10px}
 .footer{text-align:center;padding:20px;color:var(--muted)}
+.nav{position:sticky;top:0;background:#020617;padding:10px;text-align:center}
+.nav a{color:white;margin:0 10px;text-decoration:none}
 </style>
 </head>
-<body>
-<header>
+<body><div class="nav">
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+<a href="#dashboard">Dashboard</a>
+</div><header>
 <h1 id="name"></h1>
 <p id="role"></p>
+<a href="HARSHAVARDHAN PRATAP NIMBALKAR(resume).pdf" download><button>Download Resume</button></a>
+<br><br>
 <button onclick="toggleAdmin()">Admin Access</button>
 </header><div class="container">
-<h2>Projects</h2>
-<div id="projects"></div><div id="adminPanel">
+<h2 id="projects">Projects</h2>
+<div id="projectsContainer"></div><h2 id="contact">Contact Me</h2>
+<div class="card">
+<p>Email: harshavardhannimbalkar90@gmail.com@gmail.com</p>
+<p>Phone: 9511921903</p>
+<p>LinkedIn: http://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer</p>
+</div><h2 id="dashboard">Recruiter Dashboard</h2>
+<div class="card">
+<p>Total Visits: <span id="visits"></span></p>
+<p>Total Projects: <span id="projectCount"></span></p>
+</div><div id="adminPanel">
 <h2>Admin Panel</h2>
 <input type="password" id="code" placeholder="Enter Access Code" />
 <button onclick="unlock()">Unlock</button><div id="editor" style="display:none">
@@ -43,11 +59,19 @@ img{max-width:100%;border-radius:10px;margin-top:10px}
 </div>
 </div>
 </div><div class="footer">© 2026 Harshavardhan Nimbalkar</div><script>
-const ACCESS_CODE = "12345";
+const ACCESS_CODE="5667";
 
-// Load saved data
-let profile = JSON.parse(localStorage.getItem('profile')) || {name:"Harshavardhan Nimbalkar",role:"Civil Engineer | AutoCAD Designer"};
-let projects = JSON.parse(localStorage.getItem('projects')) || [];
+let profile=JSON.parse(localStorage.getItem('profile'))||{name:"Harshavardhan Nimbalkar",role:"Trainee Civil Engineer | AutoCAD | CIDCO Project"};
+let projects=JSON.parse(localStorage.getItem('projects'))||[];
+
+// Visit Counter
+let visits=localStorage.getItem('visits')||0;
+visits++;
+localStorage.setItem('visits',visits);
+
+document.getElementById('visits').innerText=visits;
+
+document.getElementById('projectCount').innerText=projects.length;
 
 function save(){
  localStorage.setItem('profile',JSON.stringify(profile));
@@ -55,17 +79,17 @@ function save(){
 }
 
 function render(){
- document.getElementById('name').innerText = profile.name;
- document.getElementById('role').innerText = profile.role;
-
- let container = document.getElementById('projects');
- container.innerHTML = '';
+ document.getElementById('name').innerText=profile.name;
+ document.getElementById('role').innerText=profile.role;
+ let container=document.getElementById('projectsContainer');
+ container.innerHTML='';
  projects.forEach((p,i)=>{
-   let div = document.createElement('div');
-   div.className='card';
-   div.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>${p.file?`<img src="${p.file}"/>`:''}<br><button onclick="deleteProject(${i})">Delete</button>`;
-   container.appendChild(div);
+  let div=document.createElement('div');
+  div.className='card';
+  div.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>${p.file?`<img src="${p.file}"/>`:''}<br><button onclick="deleteProject(${i})">Delete</button>`;
+  container.appendChild(div);
  });
+ document.getElementById('projectCount').innerText=projects.length;
 }
 
 function toggleAdmin(){document.getElementById('adminPanel').style.display='block'}
@@ -89,21 +113,18 @@ function addProject(){
  let reader=new FileReader();
 
  if(fileInput.files[0]){
-   reader.onload=function(){
-     projects.push({title,desc,file:reader.result});
-     save(); render();
-   };
-   reader.readAsDataURL(fileInput.files[0]);
- } else {
-   projects.push({title,desc});
+  reader.onload=function(){
+   projects.push({title,desc,file:reader.result});
    save(); render();
+  };
+  reader.readAsDataURL(fileInput.files[0]);
+ }else{
+  projects.push({title,desc});
+  save(); render();
  }
 }
 
-function deleteProject(i){
- projects.splice(i,1);
- save(); render();
-}
+function deleteProject(i){projects.splice(i,1);save();render();}
 
 render();
 </script></body>
