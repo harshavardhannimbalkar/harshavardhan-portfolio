@@ -1,1446 +1,1358 @@
-<!DOCTYPE html><html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harshavardhan Nimbalkar | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0b1220;--card:#111a2e;--accent:#3b82f6;--text:#e5e7eb;--muted:#9ca3af}
-*{box-sizing:border-box}
-body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
-header{padding:60px 20px;text-align:center;background:linear-gradient(135deg,#0f172a,#020617)}
-h1{margin:0;font-size:2.5rem}
-p{color:var(--muted)}
-.container{max-width:1000px;margin:auto;padding:20px}
-.card{background:var(--card);padding:20px;border-radius:16px;margin:15px 0;box-shadow:0 10px 25px rgba(0,0,0,.3);transition:.4s}
-.card:hover{transform:translateY(-8px) scale(1.02)}
-button{background:var(--accent);color:white;padding:10px 15px;border:none;border-radius:8px;cursor:pointer}
-input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#020617;color:white}
-#adminPanel{display:none;background:#020617;padding:20px;border-radius:12px}
-img{max-width:100%;border-radius:10px;margin-top:10px}
-.footer{text-align:center;padding:20px;color:var(--muted)}
-.nav{position:sticky;top:0;background:#020617;padding:10px;text-align:center}
-.nav a{color:white;margin:0 10px;text-decoration:none}
-</style>
-</head>
-<body><div class="nav">
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-<a href="#dashboard">Dashboard</a>
-</div><header>
-<h1 id="name"></h1>
-<p id="role"></p>
-<a href="HARSHAVARDHAN PRATAP NIMBALKAR(resume).pdf" download><button>Download Resume</button></a>
-<br><br>
-<button onclick="toggleAdmin()">Admin Access</button>
-</header><div class="container">
-<h2 id="projects">Projects</h2>
-<div id="projectsContainer"></div><h2 id="contact">Contact Me</h2>
-<div class="card">
-<p>Email: harshavardhannimbalkar90@gmail.com</p>
-<p>Phone: 9511921903</p>
-<p>LinkedIn: (http://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer)</p>
-</div><h2 id="dashboard">Recruiter Dashboard</h2>
-<div class="card">
-<p>Total Visits: <span id="visits"></span></p>
-<p>Total Projects: <span id="projectCount"></span></p>
-</div><div id="adminPanel">
-<h2>Admin Panel</h2>
-<input type="password" id="code" placeholder="Enter Access Code" />
-<button onclick="unlock()">Unlock</button><div id="editor" style="display:none">
-<h3>Edit Profile</h3>
-<input id="editName" placeholder="Name" />
-<input id="editRole" placeholder="Role" />
-<button onclick="updateProfile()">Update</button><h3>Add Project</h3>
-<input id="projTitle" placeholder="Title" />
-<textarea id="projDesc" placeholder="Description"></textarea>
-<input type="file" id="fileUpload" />
-<button onclick="addProject()">Add Project</button>
-</div>
-</div>
-</div><div class="footer">© 2026 Harshavardhan Nimbalkar</div><script>
-const ACCESS_CODE="5667";
-
-let profile=JSON.parse(localStorage.getItem('profile'))||{name:"Harshavardhan Nimbalkar",role:"Trainee Civil Engineer | AutoCAD | CIDCO Project"};
-let projects=JSON.parse(localStorage.getItem('projects'))||[];
-
-// Visit Counter
-let visits=localStorage.getItem('visits')||0;
-visits++;
-localStorage.setItem('visits',visits);
-
-document.getElementById('visits').innerText=visits;
-
-document.getElementById('projectCount').innerText=projects.length;
-
-function save(){
- localStorage.setItem('profile',JSON.stringify(profile));
- localStorage.setItem('projects',JSON.stringify(projects));
-}
-
-function render(){
- document.getElementById('name').innerText=profile.name;
- document.getElementById('role').innerText=profile.role;
- let container=document.getElementById('projectsContainer');
- container.innerHTML='';
- projects.forEach((p,i)=>{
-  let div=document.createElement('div');
-  div.className='card';
-  div.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>${p.file?`<img src="${p.file}"/>`:''}<br><button onclick="deleteProject(${i})">Delete</button>`;
-  container.appendChild(div);
- });
- document.getElementById('projectCount').innerText=projects.length;
-}
-
-function toggleAdmin(){document.getElementById('adminPanel').style.display='block'}
-
-function unlock(){
- let code=document.getElementById('code').value;
- if(code===ACCESS_CODE){document.getElementById('editor').style.display='block'}
- else alert('Wrong Code');
-}
-
-function updateProfile(){
- profile.name=document.getElementById('editName').value;
- profile.role=document.getElementById('editRole').value;
- save(); render();
-}
-
-function addProject(){
- let title=document.getElementById('projTitle').value;
- let desc=document.getElementById('projDesc').value;
- let fileInput=document.getElementById('fileUpload');
- let reader=new FileReader();
-
- if(fileInput.files[0]){
-  reader.onload=function(){
-   projects.push({title,desc,file:reader.result});
-   save(); render();
-  };
-  reader.readAsDataURL(fileInput.files[0]);
- }else{
-  projects.push({title,desc});
-  save(); render();
- }
-}
-
-function deleteProject(i){projects.splice(i,1);save();render();}
-
-render();
-</script></body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+<meta name="description" content="Harshavardhan Pratap Nimbalkar — Civil Design Engineer. AutoCAD, Civil 3D, PMAY CIDCO Internship. Open to Pune."/>
 <title>Harshavardhan Nimbalkar — Civil Design Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --ink: #0f1923;
-    --ink-mid: #2d3f50;
-    --ink-light: #5a6e80;
-    --ink-faint: #8fa0b0;
-    --paper: #f5f1eb;
-    --paper-warm: #ede8e0;
-    --paper-dark: #e0d9ce;
-    --accent: #1a4f6e;
-    --accent-bright: #0d7aa8;
-    --accent-glow: #4fb3d9;
-    --gold: #b8893a;
-    --gold-light: #d4a855;
-    --line: rgba(26,79,110,0.15);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
-  /* ── SIDEBAR NAV ── */
-  .sidebar {
-    position: fixed;
-    left: 0; top: 0; bottom: 0;
-    width: 220px;
-    background: var(--ink);
-    display: flex;
-    flex-direction: column;
-    padding: 48px 0;
-    z-index: 100;
-    border-right: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .sidebar-logo {
-    padding: 0 28px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 32px;
-  }
-
-  .sidebar-logo .initials {
-    font-family: var(--serif);
-    font-size: 32px;
-    color: var(--gold-light);
-    letter-spacing: -1px;
-    display: block;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .sidebar-logo .role-tag {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--accent-glow);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .nav-links { list-style: none; flex: 1; }
-
-  .nav-links li a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 28px;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    border-left: 2px solid transparent;
-  }
-
-  .nav-links li a:hover,
-  .nav-links li a.active {
-    color: var(--gold-light);
-    border-left-color: var(--gold-light);
-    background: rgba(212,168,85,0.06);
-  }
-
-  .nav-links li a .nav-icon { font-size: 14px; width: 18px; text-align: center; }
-
-  .sidebar-footer {
-    padding: 24px 28px 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .sidebar-footer a {
-    display: block;
-    color: rgba(255,255,255,0.3);
-    font-size: 11px;
-    text-decoration: none;
-    margin-bottom: 8px;
-    transition: color 0.2s;
-    word-break: break-all;
-  }
-
-  .sidebar-footer a:hover { color: var(--accent-glow); }
-
-  /* ── MAIN CONTENT ── */
-  .main {
-    margin-left: 220px;
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 80px 72px 64px;
-    background: linear-gradient(135deg, var(--ink) 0%, var(--ink-mid) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(79,179,217,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: 'CIVIL\AENGINEER';
-    white-space: pre;
-    position: absolute;
-    right: 72px; top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--serif);
-    font-size: 88px;
-    line-height: 0.85;
-    color: rgba(255,255,255,0.03);
-    letter-spacing: -4px;
-    pointer-events: none;
-    text-align: right;
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent-glow);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 32px; height: 1px;
-    background: var(--accent-glow);
-  }
-
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(36px, 5vw, 56px);
-    color: #fff;
-    line-height: 1.05;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
-  }
-
-  .hero h1 span { color: var(--gold-light); font-style: italic; }
-
-  .hero-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 36px;
-    font-weight: 300;
-    letter-spacing: 0.3px;
-  }
-
-  .hero-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-
-  .pill {
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 6px 14px;
-    border-radius: 2px;
-    letter-spacing: 0.5px;
-  }
-
-  .pill-outline {
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.6);
-  }
-
-  .pill-filled {
-    background: var(--accent-bright);
-    color: #fff;
-  }
-
-  .pill-gold {
-    background: rgba(184,137,58,0.2);
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-  }
-
-  .hero-contacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .contact-item:hover { color: var(--accent-glow); }
-  .contact-item .ci-icon { font-size: 14px; }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: 64px 72px;
-    border-bottom: 1px solid var(--line);
-    animation: fadeUp 0.5s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .section:nth-child(even) { background: rgba(255,255,255,0.4); }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent-bright);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-    max-width: 60px;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: 30px;
-    color: var(--ink);
-    margin-bottom: 40px;
-    letter-spacing: -0.5px;
-  }
-
-  /* ── SUMMARY ── */
-  .summary-text {
-    font-size: 16px;
-    color: var(--ink-mid);
-    line-height: 1.8;
-    max-width: 680px;
-    border-left: 3px solid var(--gold);
-    padding-left: 24px;
-  }
-
-  /* ── SKILLS GRID ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .skill-card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 20px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .skill-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(26,79,110,0.1);
-  }
-
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
-  }
-
-  .skill-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-
-  .skill-desc {
-    font-size: 12px;
-    color: var(--ink-light);
-    line-height: 1.5;
-  }
-
-  .skill-level {
-    margin-top: 12px;
-    height: 3px;
-    background: var(--paper-dark);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .skill-level-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
-    border-radius: 2px;
-    transition: width 1s ease;
-  }
-
-  /* ── EXPERIENCE TIMELINE ── */
-  .timeline { position: relative; }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 14px; top: 8px; bottom: 0;
-    width: 1px;
-    background: var(--line);
-  }
-
-  .timeline-item {
-    padding-left: 48px;
-    position: relative;
-    margin-bottom: 48px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 8px; top: 8px;
-    width: 13px; height: 13px;
-    border-radius: 50%;
-    background: var(--accent-bright);
-    border: 3px solid var(--paper);
-    box-shadow: 0 0 0 1px var(--accent-bright);
-  }
-
-  .timeline-meta {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
-  .timeline-role {
-    font-family: var(--serif);
-    font-size: 20px;
-    color: var(--ink);
-    letter-spacing: -0.3px;
-  }
-
-  .timeline-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    background: rgba(184,137,58,0.1);
-    border: 1px solid rgba(184,137,58,0.25);
-    padding: 4px 10px;
-    border-radius: 2px;
-    white-space: nowrap;
-  }
-
-  .timeline-org {
-    font-size: 13px;
-    color: var(--accent-bright);
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-
-  .timeline-bullets { list-style: none; }
-
-  .timeline-bullets li {
-    font-size: 14px;
-    color: var(--ink-mid);
-    padding: 5px 0 5px 20px;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .timeline-bullets li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-size: 11px;
-    top: 7px;
-  }
-
-  /* ── PORTFOLIO SECTION ── */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .portfolio-card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-
-  .portfolio-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(26,79,110,0.12);
-  }
-
-  .portfolio-thumb {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .portfolio-thumb.autocad { background: linear-gradient(135deg, #0d2137 0%, #1a3f5c 100%); }
-  .portfolio-thumb.civil3d { background: linear-gradient(135deg, #0a2818 0%, #1a4f30 100%); }
-  .portfolio-thumb.excel { background: linear-gradient(135deg, #0f2b0a 0%, #1e5014 100%); }
-  .portfolio-thumb.msproject { background: linear-gradient(135deg, #2b0a2b 0%, #4f1450 100%); }
-  .portfolio-thumb.add-new { background: var(--paper-warm); border: 2px dashed var(--paper-dark); }
-
-  .portfolio-thumb .thumb-label {
-    position: absolute;
-    top: 12px; right: 12px;
-    font-family: var(--mono);
-    font-size: 9px;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .portfolio-thumb.add-new .thumb-label { color: var(--ink-faint); }
-
-  .portfolio-thumb .thumb-icon {
-    font-size: 40px;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-  }
-
-  .portfolio-body {
-    padding: 20px 24px;
-  }
-
-  .portfolio-title {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--ink);
-    margin-bottom: 6px;
-    letter-spacing: -0.2px;
-  }
-
-  .portfolio-desc {
-    font-size: 13px;
-    color: var(--ink-light);
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .portfolio-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 16px;
-  }
-
-  .portfolio-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 8px;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    color: var(--ink-light);
-    border-radius: 2px;
-  }
-
-  .portfolio-actions {
-    display: flex;
-    gap: 8px;
-  }
-
-  .btn-sm {
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 7px 14px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border: none;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-  }
-
-  .btn-primary:hover { background: var(--accent-bright); }
-
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--line);
-    color: var(--ink-light);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .add-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 280px;
-    border: 2px dashed var(--paper-dark);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: transparent;
-    text-align: center;
-    padding: 32px;
-  }
-
-  .add-card:hover {
-    border-color: var(--accent-bright);
-    background: rgba(13,122,168,0.03);
-  }
-
-  .add-card .add-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-    color: var(--ink-faint);
-  }
-
-  .add-card .add-label {
-    font-family: var(--serif);
-    font-size: 16px;
-    color: var(--ink-light);
-    margin-bottom: 6px;
-  }
-
-  .add-card .add-hint {
-    font-size: 12px;
-    color: var(--ink-faint);
-  }
-
-  /* ── EDUCATION ── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .edu-card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 24px;
-    position: relative;
-  }
-
-  .edu-degree {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-
-  .edu-institute {
-    font-size: 13px;
-    color: var(--accent-bright);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-
-  .edu-detail {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-faint);
-    margin-bottom: 3px;
-  }
-
-  .edu-grade {
-    display: inline-block;
-    margin-top: 12px;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--gold);
-    background: rgba(184,137,58,0.1);
-    border: 1px solid rgba(184,137,58,0.2);
-    padding: 4px 12px;
-    border-radius: 2px;
-  }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(15,25,35,0.85);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    backdrop-filter: blur(4px);
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--paper);
-    border-radius: 6px;
-    padding: 40px;
-    width: 100%;
-    max-width: 560px;
-    position: relative;
-    animation: modalIn 0.25s ease;
-  }
-
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.96) translateY(12px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: var(--ink-faint);
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 2px;
-    transition: color 0.2s;
-  }
-
-  .modal-close:hover { color: var(--ink); }
-
-  .modal h3 {
-    font-family: var(--serif);
-    font-size: 24px;
-    color: var(--ink);
-    margin-bottom: 24px;
-  }
-
-  .form-group { margin-bottom: 20px; }
-
-  .form-label {
-    display: block;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-light);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .form-input, .form-select, .form-textarea {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    background: #fff;
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 14px;
-    transition: border-color 0.2s;
-    outline: none;
-  }
-
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--accent-bright);
-  }
-
-  .form-textarea { resize: vertical; min-height: 80px; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  .btn-full {
-    width: 100%;
-    padding: 12px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 1px;
-    border: none;
-    border-radius: 3px;
-    background: var(--accent);
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 8px;
-  }
-
-  .btn-full:hover { background: var(--accent-bright); }
-
-  /* ── CERTIFICATIONS ── */
-  .cert-list { display: flex; flex-direction: column; gap: 12px; }
-
-  .cert-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-  }
-
-  .cert-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  .cert-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-
-  .cert-detail {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-faint);
-  }
-
-  .cert-badge {
-    margin-left: auto;
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 4px 10px;
-    border-radius: 2px;
-    white-space: nowrap;
-  }
-
-  .cert-badge.done { background: rgba(26,79,110,0.1); color: var(--accent); border: 1px solid rgba(26,79,110,0.2); }
-  .cert-badge.pending { background: rgba(184,137,58,0.1); color: var(--gold); border: 1px solid rgba(184,137,58,0.2); }
-
-  /* ── PRINT BUTTON ── */
-  .print-bar {
-    position: fixed;
-    bottom: 24px; right: 24px;
-    display: flex;
-    gap: 8px;
-    z-index: 200;
-  }
-
-  .fab {
-    padding: 12px 20px;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
-
-  .fab-primary { background: var(--accent); color: #fff; }
-  .fab-primary:hover { background: var(--accent-bright); transform: translateY(-1px); }
-  .fab-gold { background: var(--gold); color: #fff; }
-  .fab-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  /* ── TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 80px; right: 24px;
-    background: var(--ink);
-    color: #fff;
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 12px 20px;
-    border-radius: 3px;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.3s;
-    z-index: 300;
-    border-left: 3px solid var(--gold);
-    pointer-events: none;
-  }
-
-  .toast.show { opacity: 1; transform: translateY(0); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .main { margin-left: 0; }
-    .hero, .section { padding: 40px 28px; }
-    .hero::after { display: none; }
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  @media print {
-    .sidebar, .print-bar, .modal-overlay, .fab, .portfolio-actions { display: none !important; }
-    .main { margin-left: 0; }
-    .section { padding: 32px 40px; break-inside: avoid; }
-    body { background: #fff; }
-  }
+/*──────────────────────────────────────────
+  ROOT & RESET
+──────────────────────────────────────────*/
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090F;
+  --surface:#0D1120;
+  --surface2:#131828;
+  --border:rgba(255,107,53,.18);
+  --orange:#FF6B35;
+  --cyan:#00C9FF;
+  --green:#4ADE80;
+  --text:#D8E0F0;
+  --dim:#7A87A3;
+  --faint:#3A4560;
+  --nav-h:60px;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --pad:clamp(1rem,5vw,3rem);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,201,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,201,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px}
+
+/*──────────────────────────────────────────
+  LAYOUT HELPERS
+──────────────────────────────────────────*/
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad);position:relative;z-index:1}
+.sec{padding:5rem 0}
+.sec-label{font-family:'Roboto Mono',monospace;font-size:.68rem;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:.6rem}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3.2rem);letter-spacing:2px;line-height:1.05;margin-bottom:2.5rem}
+.sec-title em{color:var(--orange);font-style:normal}
+.mono{font-family:'Roboto Mono',monospace}
+
+/*──────────────────────────────────────────
+  SCROLL REVEAL
+──────────────────────────────────────────*/
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rl.in{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rr.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/*──────────────────────────────────────────
+  NAV
+──────────────────────────────────────────*/
+nav{
+  position:fixed;top:0;left:0;right:0;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+  background:rgba(7,9,15,.88);
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  z-index:200;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.3rem;letter-spacing:2px;
+  color:var(--orange);
+  white-space:nowrap;
+}
+.nav-logo small{
+  display:block;
+  font-family:'Roboto Mono',monospace;
+  font-size:.6rem;letter-spacing:1px;
+  color:var(--dim);margin-top:-4px;
+}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{
+  font-family:'Roboto Mono',monospace;
+  font-size:.7rem;letter-spacing:1.5px;
+  color:var(--dim);text-transform:uppercase;
+  transition:color .2s;
+  position:relative;
+  white-space:nowrap;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;bottom:-3px;left:0;right:0;
+  height:1px;background:var(--orange);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .2s var(--ease);
+}
+.nav-links a:hover,.nav-links a.active{color:var(--orange)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-hire{
+  font-family:'Roboto Mono',monospace;
+  font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--orange);border:1px solid var(--orange);
+  padding:7px 18px;border-radius:2px;
+  transition:background .2s,color .2s;
+  white-space:nowrap;
+  min-height:36px;display:inline-flex;align-items:center;
+}
+.nav-hire:hover{background:var(--orange);color:#000}
+
+/* hamburger */
+.ham{display:none;flex-direction:column;gap:5px;padding:8px;-webkit-tap-highlight-color:transparent}
+.ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:1px;transition:.3s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* mobile drawer */
+.drawer{
+  display:none;
+  position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
+  background:rgba(7,9,15,.97);
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  z-index:199;
+  flex-direction:column;
+  padding:2rem var(--pad);
+  gap:.5rem;
+  overflow-y:auto;
+}
+.drawer.open{display:flex}
+.drawer a{
+  font-family:'Roboto Mono',monospace;
+  font-size:.9rem;letter-spacing:1.5px;
+  color:var(--dim);text-transform:uppercase;
+  padding:.9rem 0;
+  border-bottom:1px solid var(--surface2);
+  display:block;
+  -webkit-tap-highlight-color:transparent;
+  min-height:48px;display:flex;align-items:center;
+}
+.drawer a:last-child{border-bottom:none}
+
+/*──────────────────────────────────────────
+  HERO
+──────────────────────────────────────────*/
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:var(--nav-h);
+  padding-bottom:2rem;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr min(340px,45%);
+  gap:3rem;align-items:center;
+}
+/* NAME — split so no word breaks */
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  line-height:.95;
+  letter-spacing:2px;
+  /* each row is a short word — safe on any screen */
+}
+.hero-name .n1,.hero-name .n2{
+  display:block;
+  font-size:clamp(3rem,12vw,6.8rem);
+  color:var(--text);
+}
+.hero-name .n3{
+  display:block;
+  font-size:clamp(2rem,8vw,4.8rem);
+  color:var(--orange);
+}
+.hero-tag{
+  font-family:'Roboto Mono',monospace;
+  font-size:.7rem;letter-spacing:3px;
+  color:var(--orange);text-transform:uppercase;
+  display:flex;align-items:center;gap:.6rem;
+  margin-bottom:1rem;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--orange)}
+
+/* variation switcher */
+.var-tabs{
+  display:flex;gap:.5rem;margin-top:1.6rem;margin-bottom:.8rem;
+  flex-wrap:wrap;
+}
+.var-tab{
+  font-family:'Roboto Mono',monospace;
+  font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--dim);
+  border:1px solid var(--faint);
+  padding:5px 14px;border-radius:2px;
+  transition:border-color .2s,color .2s,background .2s;
+  min-height:32px;
+  -webkit-tap-highlight-color:transparent;
+}
+.var-tab.active,.var-tab:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,107,53,.07)}
+.var-panel{display:none}
+.var-panel.active{display:block}
+
+.hero-hl{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.3rem,4vw,2rem);
+  letter-spacing:1.5px;color:var(--cyan);
+  margin-bottom:.5rem;
+}
+.hero-sub{font-size:clamp(.85rem,2.5vw,.98rem);color:var(--dim);max-width:460px;line-height:1.75;margin-bottom:1.2rem}
+.hero-about{
+  font-size:.88rem;color:var(--dim);
+  border-left:2px solid var(--orange);
+  padding-left:.9rem;margin-bottom:1.5rem;
+  line-height:1.7;
+  font-style:italic;
+}
+.hero-ctarow{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn-p{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--orange);color:#000;
+  font-family:'Roboto Mono',monospace;
+  font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  padding:11px 24px;border-radius:2px;
+  transition:background .2s,transform .2s;
+  min-height:44px;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-p:hover{background:#ff8855;transform:translateY(-2px)}
+.btn-g{
+  display:inline-flex;align-items:center;gap:.4rem;
+  border:1px solid var(--border);color:var(--dim);
+  font-family:'Roboto Mono',monospace;
+  font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;
+  padding:11px 24px;border-radius:2px;
+  transition:border-color .2s,color .2s,transform .2s;
+  min-height:44px;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-g:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+
+/* hero card */
+.hero-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:6px;padding:1.8rem;
+  position:relative;overflow:hidden;
+}
+.hero-card::before{
+  content:'';
+  position:absolute;top:0;left:1.5rem;right:1.5rem;
+  height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);
+}
+.status-row{display:flex;align-items:center;gap:.5rem;margin-bottom:1.3rem}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--green);
+  -webkit-animation:pulse 2s ease infinite;animation:pulse 2s ease infinite;
+}
+@-webkit-keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+.status-txt{font-family:'Roboto Mono',monospace;font-size:.68rem;color:var(--green);letter-spacing:1px}
+.card-h{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;margin-bottom:.2rem}
+.card-sub{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--faint);letter-spacing:1px;margin-bottom:1.2rem}
+.stat-rows{display:flex;flex-direction:column;gap:.6rem}
+.stat-i{display:flex;align-items:center;gap:.5rem}
+.stat-lbl{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--faint);width:90px;flex-shrink:0}
+.stat-bar{flex:1;height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.stat-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--cyan));border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
+.stat-v{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--orange);width:28px;text-align:right}
+.card-links{display:flex;gap:.5rem;margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--surface2)}
+.c-lnk{
+  flex:1;text-align:center;
+  font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--dim);
+  padding:8px 4px;border:1px solid var(--surface2);border-radius:3px;
+  transition:border-color .2s,color .2s;
+  min-height:36px;display:flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.c-lnk:hover{border-color:var(--orange);color:var(--orange)}
+
+/* scroll hint */
+.scroll-hint{
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:2px;
+  color:var(--faint);text-transform:uppercase;
+  margin-top:3rem;
+  -webkit-animation:fadeUp 1s var(--ease) 1.2s both;animation:fadeUp 1s var(--ease) 1.2s both;
+}
+.scroll-hint .arr{width:1px;height:32px;background:linear-gradient(var(--orange),transparent);-webkit-animation:arr 1.8s ease infinite;animation:arr 1.8s ease infinite}
+@-webkit-keyframes arr{0%{opacity:0;transform:scaleY(0) translateY(-8px)}40%{opacity:1}100%{opacity:0;transform:scaleY(1)}}
+@keyframes arr{0%{opacity:0;transform:scaleY(0) translateY(-8px)}40%{opacity:1}100%{opacity:0;transform:scaleY(1)}}
+@-webkit-keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* typewriter */
+.tw-row{
+  font-family:'Roboto Mono',monospace;font-size:.85rem;
+  color:var(--cyan);margin-top:.3rem;
+  display:inline-flex;align-items:center;gap:.4rem;
+}
+.cursor{display:inline-block;width:2px;height:.9em;background:var(--cyan);vertical-align:middle;-webkit-animation:blink 1s step-end infinite;animation:blink 1s step-end infinite}
+@-webkit-keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/*──────────────────────────────────────────
+  PROBLEM / PAS
+──────────────────────────────────────────*/
+#problem{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.pain-block{background:var(--bg);border:1px solid var(--border);border-left:3px solid #ef4444;border-radius:0 4px 4px 0;padding:1.5rem}
+.pain-block h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1.5px;color:#ef4444;margin-bottom:.8rem}
+.pain-block p{font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:.7rem}
+.pain-block p:last-child{margin-bottom:0}
+.solution-box{background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:0 4px 4px 0;padding:1.5rem}
+.solution-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1.5px;color:var(--orange);margin-bottom:.8rem}
+.solution-box p{font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:.7rem}
+.solution-box p:last-child{margin-bottom:0}
+.solution-box strong{color:var(--orange)}
+
+/*──────────────────────────────────────────
+  ABOUT
+──────────────────────────────────────────*/
+#about{padding:5rem 0}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:3.5rem;align-items:start}
+.about-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:6px;
+  overflow:hidden;position:sticky;top:calc(var(--nav-h) + 1.5rem);
+}
+.about-avatar{
+  height:200px;background:linear-gradient(135deg,var(--surface2),var(--bg));
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.about-avatar::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(0,201,255,.06))}
+.avi{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:3px;color:var(--orange);opacity:.5;z-index:1}
+.about-meta{padding:1.3rem}
+.meta-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Roboto Mono',monospace;font-size:.68rem;letter-spacing:1px;
+  padding:.45rem 0;border-bottom:1px solid var(--surface2);
+}
+.meta-row:last-child{border-bottom:none}
+.meta-row span:first-child{color:var(--faint)}
+.meta-row span:last-child{color:var(--text)}
+.about-text p{font-size:.95rem;color:var(--dim);line-height:1.85;margin-bottom:1.1rem}
+.about-text p strong{color:var(--orange)}
+.quote-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--orange);
+  padding:1.2rem 1.4rem;border-radius:0 4px 4px 0;margin-top:1.5rem;
+  font-family:'Roboto Mono',monospace;font-size:.78rem;color:var(--dim);line-height:1.7;
+}
+.quote-box strong{color:var(--orange);display:block;margin-bottom:.3rem}
+
+/*──────────────────────────────────────────
+  BENEFITS
+──────────────────────────────────────────*/
+#benefits{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.benefit-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  padding:2rem 1.5rem;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+}
+.benefit-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--orange);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.benefit-card:hover{border-color:rgba(255,107,53,.5);transform:translateY(-4px)}
+.benefit-card:hover::before{transform:scaleX(1)}
+.benefit-icon{font-size:2rem;margin-bottom:1rem}
+.benefit-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px;color:var(--text);margin-bottom:.6rem}
+.benefit-desc{font-size:.88rem;color:var(--dim);line-height:1.75}
+
+/*──────────────────────────────────────────
+  SKILLS
+──────────────────────────────────────────*/
+#skills{padding:5rem 0}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem}
+.skill-cat{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:1.5rem;transition:border-color .25s,transform .25s;
+}
+.skill-cat:hover{border-color:rgba(255,107,53,.4);transform:translateY(-3px)}
+.cat-icon{font-size:1.3rem;margin-bottom:.6rem}
+.cat-name{font-family:'Roboto Mono',monospace;font-size:.7rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:1rem}
+.sk-items{display:flex;flex-direction:column;gap:.6rem}
+.sk-row{display:flex;flex-direction:column;gap:.2rem}
+.sk-top{display:flex;justify-content:space-between;font-size:.83rem;color:var(--text)}
+.sk-pct{font-family:'Roboto Mono',monospace;font-size:.67rem;color:var(--dim)}
+.sk-bg{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.sk-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
+
+/*──────────────────────────────────────────
+  HOW IT WORKS
+──────────────────────────────────────────*/
+#how{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.step-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  padding:2rem 1.5rem;text-align:center;position:relative;
+  transition:border-color .25s;
+}
+.step-card:hover{border-color:var(--orange)}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;
+  color:var(--orange);opacity:.18;
+  position:absolute;top:.5rem;right:1rem;letter-spacing:2px;
+}
+.step-icon{font-size:1.8rem;margin-bottom:1rem}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1.5px;color:var(--text);margin-bottom:.6rem}
+.step-desc{font-size:.86rem;color:var(--dim);line-height:1.75}
+
+/*──────────────────────────────────────────
+  PROJECTS
+──────────────────────────────────────────*/
+#projects{padding:5rem 0}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.proj-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.proj-card:hover{
+  border-color:var(--orange);transform:translateY(-5px);
+  box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 0 1px rgba(255,107,53,.08);
+}
+.proj-bar{height:6px;background:linear-gradient(90deg,var(--orange),var(--cyan))}
+.proj-bar.b2{background:linear-gradient(90deg,var(--cyan),var(--orange))}
+.proj-bar.b3{background:linear-gradient(90deg,#7c3aed,var(--cyan))}
+.proj-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.proj-num{font-family:'Roboto Mono',monospace;font-size:.63rem;letter-spacing:2px;color:var(--faint);margin-bottom:.7rem}
+.proj-title{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:1.5px;color:var(--text);margin-bottom:.5rem;line-height:1.1}
+.proj-problem{font-size:.83rem;color:var(--orange);font-style:italic;margin-bottom:.7rem;line-height:1.6}
+.proj-desc{font-size:.88rem;color:var(--dim);line-height:1.75;flex:1;margin-bottom:1rem}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.stag{
+  font-family:'Roboto Mono',monospace;font-size:.63rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--cyan);border:1px solid rgba(0,201,255,.2);
+  padding:2px 8px;border-radius:2px;background:rgba(0,201,255,.05);
+}
+.proj-outcome{
+  font-size:.82rem;color:var(--text-dim);
+  border-top:1px solid var(--surface2);padding-top:.8rem;
+  display:flex;gap:.5rem;align-items:flex-start;
+}
+.proj-outcome::before{content:'▸';color:var(--green);flex-shrink:0;font-size:.7rem;margin-top:.2rem}
+
+/*──────────────────────────────────────────
+  EXPERIENCE
+──────────────────────────────────────────*/
+#experience{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(var(--orange),transparent)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-dot{position:absolute;left:-2.35rem;top:6px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);box-shadow:0 0 0 4px rgba(255,107,53,.1)}
+.tl-date{font-family:'Roboto Mono',monospace;font-size:.68rem;letter-spacing:1.5px;color:var(--orange);text-transform:uppercase;margin-bottom:.3rem}
+.tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1.5px;color:var(--text);margin-bottom:.2rem}
+.tl-org{font-size:.9rem;color:var(--cyan);font-weight:600;margin-bottom:.1rem}
+.tl-loc{font-family:'Roboto Mono',monospace;font-size:.68rem;color:var(--faint);letter-spacing:1px;margin-bottom:.9rem}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.tl-bullets li{font-size:.9rem;color:var(--dim);display:flex;gap:.65rem;align-items:baseline;line-height:1.65}
+.tl-bullets li::before{content:'▸';color:var(--orange);font-size:.65rem;flex-shrink:0}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+.ttag{
+  font-family:'Roboto Mono',monospace;font-size:.63rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--orange);border:1px solid rgba(255,107,53,.25);
+  padding:2px 9px;border-radius:2px;background:rgba(255,107,53,.05);
+}
+
+/*──────────────────────────────────────────
+  SOCIAL PROOF
+──────────────────────────────────────────*/
+#social{padding:5rem 0}
+.social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem}
+.testimonial{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.5rem;
+  position:relative;overflow:hidden;transition:border-color .2s;
+}
+.testimonial:hover{border-color:rgba(255,107,53,.4)}
+.quote-mark{font-size:4rem;line-height:1;color:var(--orange);opacity:.12;position:absolute;top:.5rem;left:1rem;font-family:Georgia,serif}
+.testi-text{font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:1rem;font-style:italic}
+.testi-author{font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--text);letter-spacing:1px}
+.testi-role{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--faint);letter-spacing:1px}
+.placeholder-badge{
+  display:inline-block;font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--faint);border:1px dashed var(--faint);padding:2px 8px;border-radius:2px;margin-top:.5rem;
+}
+
+/* stats row */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin-top:3rem}
+.stat-box{text-align:center;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:4px}
+.stat-big{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--orange);line-height:1}
+.stat-lbl2{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--faint);margin-top:.3rem}
+
+/*──────────────────────────────────────────
+  EDUCATION
+──────────────────────────────────────────*/
+#education{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem}
+.edu-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  padding:1.7rem;position:relative;overflow:hidden;transition:border-color .2s;
+}
+.edu-card:hover{border-color:rgba(255,107,53,.4)}
+.edu-yr{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--orange);opacity:.1;position:absolute;top:.4rem;right:.8rem}
+.edu-deg{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1px;color:var(--text);margin-bottom:.2rem}
+.edu-field{font-size:.85rem;color:var(--cyan);font-weight:600;margin-bottom:.5rem}
+.edu-inst{font-size:.83rem;color:var(--dim);margin-bottom:.4rem;line-height:1.5}
+.edu-score{
+  font-family:'Roboto Mono',monospace;font-size:.75rem;color:var(--orange);
+  border:1px solid rgba(255,107,53,.3);padding:3px 10px;border-radius:2px;
+  background:rgba(255,107,53,.06);display:inline-block;margin-top:.4rem;
+}
+
+/*──────────────────────────────────────────
+  CERTIFICATIONS
+──────────────────────────────────────────*/
+#certifications{padding:5rem 0}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.cert-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:1.2rem 1.4rem;display:flex;align-items:center;gap:.9rem;
+  transition:border-color .2s,transform .2s;
+}
+.cert-card:hover{border-color:var(--orange);transform:translateX(4px)}
+.cert-icon{font-size:1.4rem;flex-shrink:0}
+.cert-name{font-weight:600;font-size:.88rem;color:var(--text);margin-bottom:.2rem}
+.cert-issuer{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:1px}
+.cert-status{flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.done{color:var(--green);background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.2)}
+.prog{color:var(--cyan);background:rgba(0,201,255,.07);border:1px solid rgba(0,201,255,.2)}
+
+/*──────────────────────────────────────────
+  FAQ
+──────────────────────────────────────────*/
+#faq{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.faq-list{display:flex;flex-direction:column;gap:.7rem;max-width:760px}
+.faq-item{background:var(--bg);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.2rem;
+  font-size:.93rem;font-weight:600;color:var(--text);
+  text-align:left;
+  cursor:pointer;gap:1rem;
+  min-height:52px;
+  -webkit-tap-highlight-color:transparent;
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--orange)}
+.faq-icon{color:var(--orange);font-size:1.1rem;flex-shrink:0;transition:transform .3s var(--ease)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.faq-a-inner{padding:0 1.2rem 1rem;font-size:.88rem;color:var(--dim);line-height:1.8}
+.faq-item.open .faq-a{max-height:200px}
+
+/*──────────────────────────────────────────
+  CTA BANNER
+──────────────────────────────────────────*/
+#cta{padding:5rem 0}
+.cta-banner{
+  background:linear-gradient(135deg,var(--surface),var(--surface2));
+  border:1px solid var(--border);border-radius:8px;
+  padding:clamp(2rem,5vw,4rem);
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--orange),var(--cyan),var(--orange));
+}
+.cta-banner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3.5rem);letter-spacing:2px;margin-bottom:.8rem}
+.cta-banner p{font-size:clamp(.88rem,2.5vw,1rem);color:var(--dim);max-width:520px;margin:0 auto 2rem;line-height:1.8}
+.cta-btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+
+/*──────────────────────────────────────────
+  CONTACT
+──────────────────────────────────────────*/
+#contact{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:.9rem;margin-top:1rem}
+.c-link{
+  display:flex;align-items:center;gap:.9rem;
+  color:var(--dim);
+  padding:.9rem 1.1rem;
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  transition:border-color .2s,color .2s,transform .2s;
+  min-height:56px;
+  -webkit-tap-highlight-color:transparent;
+}
+.c-link:hover{border-color:var(--orange);color:var(--orange);transform:translateX(4px)}
+.c-icon{font-size:1.1rem;width:28px;text-align:center;flex-shrink:0}
+.c-lbl{font-family:'Roboto Mono',monospace;font-size:.63rem;letter-spacing:1px;color:var(--faint);display:block;text-transform:uppercase;margin-bottom:.1rem}
+.c-val{font-size:.86rem}
+
+/* contact form */
+.cf{display:flex;flex-direction:column;gap:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1.8rem;position:relative}
+.cf::before{content:'';position:absolute;top:0;left:1.5rem;right:1.5rem;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent)}
+.cf-lbl{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:1px;color:var(--faint);text-transform:uppercase;display:block;margin-bottom:.35rem}
+.cf input,.cf textarea{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  color:var(--text);padding:10px 13px;border-radius:3px;
+  font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;
+  transition:border-color .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.cf input:focus,.cf textarea:focus{border-color:var(--orange)}
+.cf textarea{resize:vertical;min-height:100px}
+.cf-note{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.5px;color:var(--faint)}
+
+/*──────────────────────────────────────────
+  FOOTER
+──────────────────────────────────────────*/
+footer{
+  border-top:1px solid var(--border);
+  padding:1.8rem var(--pad);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--faint);letter-spacing:1px;
+  position:relative;z-index:1;
+}
+footer span{color:var(--orange)}
+.ft-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.ft-links a{color:var(--faint);transition:color .2s;min-height:32px;display:flex;align-items:center}
+.ft-links a:hover{color:var(--orange)}
+
+/*──────────────────────────────────────────
+  RESPONSIVE
+──────────────────────────────────────────*/
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{max-width:420px}
+  .problem-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-card{position:static;display:flex;flex-direction:row;overflow:visible}
+  .about-avatar{height:auto;width:120px;flex-shrink:0;border-bottom:none;border-right:1px solid var(--border)}
+  .about-meta{flex:1}
+  .benefits-grid{grid-template-columns:1fr 1fr}
+  .how-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  :root{--nav-h:56px}
+  .nav-links,.nav-hire{display:none}
+  .ham{display:flex}
+  .hero-grid{gap:2rem}
+  .about-card{flex-direction:column}
+  .about-avatar{width:100%;height:120px;border-right:none;border-bottom:1px solid var(--border)}
+  .benefits-grid{grid-template-columns:1fr}
+  .hero-ctarow{flex-direction:column}
+  .btn-p,.btn-g{justify-content:center}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+  .sec{padding:3.5rem 0}
+}
+@media(max-width:360px){
+  .hero-name .n1,.hero-name .n2{font-size:2.6rem}
+  .hero-name .n3{font-size:1.9rem}
+}
 </style>
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<nav class="sidebar">
-  <div class="sidebar-logo">
-    <span class="initials">HPN</span>
-    <span class="role-tag">Civil Design</span>
-  </div>
+<!--═══ NAV ═══-->
+<nav>
+  <a href="#hero" class="nav-logo">HPN<small>Civil Design Engineer</small></a>
   <ul class="nav-links">
-    <li><a href="#summary" class="active"><span class="nav-icon">◈</span>Summary</a></li>
-    <li><a href="#skills"><span class="nav-icon">◎</span>Skills</a></li>
-    <li><a href="#experience"><span class="nav-icon">◉</span>Experience</a></li>
-    <li><a href="#portfolio"><span class="nav-icon">▣</span>Portfolio</a></li>
-    <li><a href="#education"><span class="nav-icon">◐</span>Education</a></li>
-    <li><a href="#certifications"><span class="nav-icon">◆</span>Certifications</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="sidebar-footer">
-    <a href="mailto:harshavardhannimbalkar90@gmail.com">harshavardhannimbalkar90<br>@gmail.com</a>
-    <a href="tel:+919511921903">+91 9511921903</a>
-    <a href="https://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank">LinkedIn ↗</a>
-  </div>
+  <a href="mailto:harshavardhannimbalkar90@gmail.com" class="nav-hire">Hire Me</a>
+  <button class="ham" id="ham" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- MAIN -->
-<main class="main">
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-tag">Available for opportunities · Jalgaon, Maharashtra</div>
-    <h1>Harshavardhan<br><span>Pratap Nimbalkar</span></h1>
-    <p class="hero-sub">B.E. Civil Engineering · Civil Design & Infrastructure · AutoCAD · Civil 3D · MS Project</p>
-    <div class="hero-pills">
-      <span class="pill pill-filled">Civil Design</span>
-      <span class="pill pill-outline">AutoCAD 2018</span>
-      <span class="pill pill-outline">Civil 3D 2012</span>
-      <span class="pill pill-outline">MS Project</span>
-      <span class="pill pill-outline">MS Excel BOQ</span>
-      <span class="pill pill-gold">Open to Relocate · Pune</span>
-    </div>
-    <div class="hero-contacts">
-      <a href="mailto:harshavardhannimbalkar90@gmail.com" class="contact-item">
-        <span class="ci-icon">✉</span> harshavardhannimbalkar90@gmail.com
-      </a>
-      <a href="tel:+919511921903" class="contact-item">
-        <span class="ci-icon">☏</span> +91 9511921903
-      </a>
-      <a href="https://www.linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank" class="contact-item">
-        <span class="ci-icon">in</span> LinkedIn Profile
-      </a>
-    </div>
-  </header>
-
-  <!-- SUMMARY -->
-  <section class="section" id="summary">
-    <div class="section-label">Profile</div>
-    <h2 class="section-title">Professional Summary</h2>
-    <p class="summary-text">
-      B.E. Civil Engineering graduate with hands-on internship experience on the PMAY-CIDCO Mass Housing Project (Package 3) executed by Shapoorji Pallonji SPE&C, Navi Mumbai. Proficient in AutoCAD 2018 and Civil 3D 2012 with a practical project portfolio covering site layout drafting, road corridor design, surface modelling, drainage pipe networks, and quantity take-off. Skilled in MS Excel BOQ preparation with VLOOKUP-linked rate libraries and PivotTable dashboards, alongside MS Project construction scheduling with critical path analysis. Targeting Civil Design and Infrastructure roles at engineering consultancies focused on residential, commercial, and site development projects — with a clear goal of growing into BIM coordination and project leadership.
-    </p>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section" id="skills">
-    <div class="section-label">Capabilities</div>
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-grid" id="skillsGrid">
-      <!-- Rendered by JS -->
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="section-label">Work History</div>
-    <h2 class="section-title">Experience & Projects</h2>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-role">Site Engineering Intern</span>
-          <span class="timeline-date">2024</span>
-        </div>
-        <div class="timeline-org">CIDCO, Navi Mumbai · PMAY Mass Housing Scheme Package 3 · Shapoorji Pallonji SPE&C</div>
-        <ul class="timeline-bullets">
-          <li>Observed and documented construction activities for PMAY mass housing project comprising EWS and LIG residential blocks along the Harbour Line section, Navi Mumbai.</li>
-          <li>Assisted quality control inspections under Sandeep Shikre & Associates for RCC structural elements, brick masonry, and waterproofing works.</li>
-          <li>Recreated complete site layout in AutoCAD: road network, EWS/LIG building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
-          <li>Built existing ground surface and road corridor in Civil 3D; generated cut/fill quantity report for Package 3 grading area.</li>
-          <li>Prepared BOQ in MS Excel for earthwork, structural concrete, and finishing items using VLOOKUP rate library and PivotTable cost summary.</li>
-          <li>Developed construction schedule in MS Project; identified critical path and presented Gantt chart to project team.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-role">B.E. Final Year Research Project</span>
-          <span class="timeline-date">2024–2025</span>
-        </div>
-        <div class="timeline-org">SSBTCOET Bambhori, Jalgaon · North Maharashtra University</div>
-        <ul class="timeline-bullets">
-          <li>Designed and tested paver block mixes incorporating plastic waste (PP/HDPE) and demolition aggregate at 5%, 10%, 15%, 20% replacement levels.</li>
-          <li>Conducted compressive strength tests at 7, 14, and 28 days — optimum mix identified at 15% plastic waste replacement with maximum strength achieved.</li>
-          <li>Prepared material quantity calculations and cost-benefit analysis in MS Excel showing significant cost reduction versus conventional paver mix.</li>
-          <li>Project aligned with Swachh Bharat Mission objectives for sustainable construction waste utilization in infrastructure.</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="section" id="portfolio">
-    <div class="section-label">Showcase</div>
-    <h2 class="section-title">Portfolio</h2>
-    <div class="portfolio-grid" id="portfolioGrid">
-      <!-- Rendered by JS -->
-    </div>
-    <div style="margin-top:20px;">
-      <button class="add-card" onclick="openAddModal()">
-        <div class="add-icon">＋</div>
-        <div class="add-label">Add New Portfolio Piece</div>
-        <div class="add-hint">Click to add drawings, reports, models, or any deliverable</div>
-      </button>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section" id="education">
-    <div class="section-label">Academic</div>
-    <h2 class="section-title">Education</h2>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-degree">B.E. Civil Engineering</div>
-        <div class="edu-institute">SSBTCOET Bambhori, Jalgaon</div>
-        <div class="edu-detail">North Maharashtra University</div>
-        <div class="edu-detail">2022 – 2025</div>
-        <span class="edu-grade">7.58 CGPA</span>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">Diploma in Civil Engineering</div>
-        <div class="edu-institute">Shri Gulabrao Deokar Polytechnic, Jalgaon</div>
-        <div class="edu-detail">MSBTE</div>
-        <div class="edu-detail">2019 – 2022</div>
-        <span class="edu-grade">75.00%</span>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">Matriculation (SSC)</div>
-        <div class="edu-institute">Tapti Public School, Bhusawal</div>
-        <div class="edu-detail">CBSE</div>
-        <div class="edu-detail">2018 – 2019</div>
-        <span class="edu-grade">58.50%</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section class="section" id="certifications">
-    <div class="section-label">Credentials</div>
-    <h2 class="section-title">Certifications & Training</h2>
-    <div class="cert-list">
-      <div class="cert-item">
-        <div class="cert-icon">🖊</div>
-        <div>
-          <div class="cert-name">AutoCAD 2018 — Practical Drafting</div>
-          <div class="cert-detail">180+ hours · Civil design applications · Site layout, Layers, Layouts, Plotting</div>
-        </div>
-        <span class="cert-badge done">Completed</span>
-      </div>
-      <div class="cert-item">
-        <div class="cert-icon">🗺</div>
-        <div>
-          <div class="cert-name">Civil 3D 2012 — Road & Drainage Design</div>
-          <div class="cert-detail">Self-trained · Surfaces, Alignments, Corridors, Pipe Networks, Quantity Take-off</div>
-        </div>
-        <span class="cert-badge done">Completed</span>
-      </div>
-      <div class="cert-item">
-        <div class="cert-icon">📊</div>
-        <div>
-          <div class="cert-name">MS Project — Construction Scheduling</div>
-          <div class="cert-detail">Gantt chart, Critical path method, Resource scheduling</div>
-        </div>
-        <span class="cert-badge done">Completed</span>
-      </div>
-      <div class="cert-item">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Autodesk Certified User — AutoCAD</div>
-          <div class="cert-detail">Certiport exam · In preparation</div>
-        </div>
-        <span class="cert-badge pending">In Progress</span>
-      </div>
-      <div class="cert-item">
-        <div class="cert-icon">🌊</div>
-        <div>
-          <div class="cert-name">HEC-RAS — Channel Hydraulics</div>
-          <div class="cert-detail">US Army Corps of Engineers · Steady flow, cross-section analysis</div>
-        </div>
-        <span class="cert-badge pending">Learning</span>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ADD PORTFOLIO MODAL -->
-<div class="modal-overlay" id="addModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3>Add Portfolio Piece</h3>
-    <div class="form-group">
-      <label class="form-label">Title</label>
-      <input class="form-input" id="newTitle" placeholder="e.g. CIDCO Site Layout — AutoCAD" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">Description</label>
-      <textarea class="form-textarea" id="newDesc" placeholder="Briefly describe what this deliverable shows..."></textarea>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Category</label>
-        <select class="form-select" id="newCategory">
-          <option value="autocad">AutoCAD Drawing</option>
-          <option value="civil3d">Civil 3D Model</option>
-          <option value="excel">Excel / BOQ</option>
-          <option value="msproject">MS Project Schedule</option>
-          <option value="report">Report / Analysis</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Year</label>
-        <input class="form-input" id="newYear" placeholder="2025" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Tags (comma separated)</label>
-      <input class="form-input" id="newTags" placeholder="e.g. AutoCAD, CIDCO, Site Layout, 1:500" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">Link (Google Drive / PDF URL)</label>
-      <input class="form-input" id="newLink" placeholder="https://drive.google.com/..." />
-    </div>
-    <button class="btn-full" onclick="addPortfolioItem()">+ Add to Portfolio</button>
-  </div>
+<div class="drawer" id="drawer">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
+  <a href="mailto:harshavardhannimbalkar90@gmail.com" style="color:var(--orange)">✉ Hire Me</a>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+<!--═══ HERO ═══-->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
 
-<!-- FABs -->
-<div class="print-bar">
-  <button class="fab fab-gold" onclick="openAddModal()">＋ Add Work</button>
-  <button class="fab fab-primary" onclick="window.print()">⎙ Print / PDF</button>
-</div>
-
-<script>
-// ── DATA ──
-const skillsData = [
-  { name: "AutoCAD 2018", desc: "2D Drafting, Layers, Blocks, Layouts, Plotting to PDF. Site plans, road layouts, building footprints.", level: 70 },
-  { name: "Civil 3D 2012", desc: "TIN Surfaces, Road Alignments, Profiles, Corridors, Pipe Networks, Quantity Take-off.", level: 55 },
-  { name: "MS Excel", desc: "BOQ preparation, VLOOKUP rate libraries, PivotTables, cost dashboards, quantity calculations.", level: 65 },
-  { name: "MS Project", desc: "Construction scheduling, Gantt charts, critical path method, resource planning.", level: 55 },
-  { name: "HEC-RAS", desc: "Basic steady-flow channel hydraulics, cross-section analysis. (In progress)", level: 20 },
-  { name: "Engineering Drawing", desc: "IS 962 standards, orthographic projection, sectional views, detail drawings.", level: 75 },
-];
-
-let portfolioData = [
-  {
-    id: 1,
-    title: "CIDCO Site Layout — AutoCAD",
-    desc: "Complete 2D site plan of CIDCO Mass Housing Package 3: site boundary, road network, EWS/LIG footprints, drainage, dimensions. Plotted A1 at 1:500.",
-    category: "autocad",
-    year: "2025",
-    tags: ["AutoCAD", "CIDCO", "Site Plan", "1:500", "PMAY"],
-    link: ""
-  },
-  {
-    id: 2,
-    title: "CIDCO Road Corridor — Civil 3D",
-    desc: "Main road design: existing ground surface, alignment, vertical profile with curves, full corridor (kerbs + footpath), and cross-section sheets.",
-    category: "civil3d",
-    year: "2025",
-    tags: ["Civil 3D", "Road Design", "Corridor", "Profile", "CIDCO"],
-    link: ""
-  },
-  {
-    id: 3,
-    title: "CIDCO BOQ & Cost Dashboard",
-    desc: "Complete BOQ workbook with VLOOKUP rate library, PivotTable summary by trade, and one-page cost dashboard with charts.",
-    category: "excel",
-    year: "2025",
-    tags: ["Excel", "BOQ", "VLOOKUP", "PivotTable", "Quantity Estimation"],
-    link: ""
-  },
-  {
-    id: 4,
-    title: "CIDCO Construction Schedule",
-    desc: "MS Project schedule for Package 3 key activities with linked tasks, critical path identified, and Gantt chart exported to PDF.",
-    category: "msproject",
-    year: "2025",
-    tags: ["MS Project", "Gantt Chart", "Critical Path", "CIDCO"],
-    link: ""
-  },
-];
-
-const categoryMeta = {
-  autocad:   { label: "AutoCAD", icon: "📐", cls: "autocad" },
-  civil3d:   { label: "Civil 3D", icon: "🗺️", cls: "civil3d" },
-  excel:     { label: "Excel", icon: "📊", cls: "excel" },
-  msproject: { label: "MS Project", icon: "📅", cls: "msproject" },
-  report:    { label: "Report", icon: "📄", cls: "civil3d" },
-  other:     { label: "Other", icon: "📁", cls: "autocad" },
-};
-
-// ── RENDER SKILLS ──
-function renderSkills() {
-  const grid = document.getElementById('skillsGrid');
-  grid.innerHTML = skillsData.map(s => `
-    <div class="skill-card">
-      <div class="skill-name">${s.name}</div>
-      <div class="skill-desc">${s.desc}</div>
-      <div class="skill-level">
-        <div class="skill-level-fill" style="width:${s.level}%"></div>
-      </div>
-    </div>
-  `).join('');
-}
-
-// ── RENDER PORTFOLIO ──
-function renderPortfolio() {
-  const grid = document.getElementById('portfolioGrid');
-  grid.innerHTML = portfolioData.map(p => {
-    const meta = categoryMeta[p.category] || categoryMeta.other;
-    const tags = p.tags.map(t => `<span class="portfolio-tag">${t}</span>`).join('');
-    const linkBtn = p.link
-      ? `<a href="${p.link}" target="_blank" class="btn-sm btn-primary">↗ View</a>`
-      : `<button class="btn-sm btn-outline" onclick="setLink(${p.id})">+ Add Link</button>`;
-    return `
-      <div class="portfolio-card">
-        <div class="portfolio-thumb ${meta.cls}">
-          <div class="thumb-label">${meta.label} · ${p.year}</div>
-          <div class="thumb-icon">${meta.icon}</div>
+      <div>
+        <div class="hero-tag">Civil &amp; Infrastructure · Pune</div>
+        <div class="hero-name">
+          <span class="n1">HARSHA</span>
+          <span class="n2">VARDHAN</span>
+          <span class="n3">NIMBALKAR</span>
         </div>
-        <div class="portfolio-body">
-          <div class="portfolio-title">${p.title}</div>
-          <div class="portfolio-desc">${p.desc}</div>
-          <div class="portfolio-tags">${tags}</div>
-          <div class="portfolio-actions">
-            ${linkBtn}
-            <button class="btn-sm btn-outline" onclick="removeItem(${p.id})">✕ Remove</button>
+
+        <!-- 3 COPY VARIATIONS -->
+        <div class="var-tabs" role="tablist">
+          <button class="var-tab active" data-v="c" role="tab">Confident</button>
+          <button class="var-tab" data-v="k" role="tab">Creative</button>
+          <button class="var-tab" data-v="m" role="tab">Minimal</button>
+        </div>
+
+        <!-- CONFIDENT -->
+        <div class="var-panel active" id="v-c">
+          <div class="hero-hl">I Build Infrastructure That Lasts.</div>
+          <p class="hero-sub">Civil design engineer turning blueprints into built reality — for consultancies and developers across India.</p>
+          <div class="hero-about">
+            PMAY site intern. AutoCAD drafter. BOQ specialist. I've done the work most graduates only study.<br/>
+            B.E. Civil Engineering · July 2025 · Open to relocate to Pune immediately.
+          </div>
+          <div class="hero-ctarow">
+            <a href="#projects" class="btn-p">View My Work</a>
+            <a href="#contact" class="btn-g">Hire Me →</a>
+          </div>
+        </div>
+
+        <!-- CREATIVE -->
+        <div class="var-panel" id="v-k">
+          <div class="hero-hl">From Blueprint to Skyline.</div>
+          <p class="hero-sub">I'm the engineer who makes sure what's drawn actually gets built — right, on time, and to spec.</p>
+          <div class="hero-about">
+            I've stood on PMAY housing sites in Navi Mumbai, recreated them in AutoCAD, scheduled them in MS Project, and costed them in Excel.<br/>
+            That's my edge over every fresher who hasn't left the classroom.
+          </div>
+          <div class="hero-ctarow">
+            <a href="#projects" class="btn-p">See My Projects</a>
+            <a href="#contact" class="btn-g">Get In Touch →</a>
+          </div>
+        </div>
+
+        <!-- MINIMAL -->
+        <div class="var-panel" id="v-m">
+          <div class="hero-hl">Civil Engineer. AutoCAD. Pune-Ready.</div>
+          <p class="hero-sub">Helping firms deliver residential and infrastructure projects through precise design and site execution.</p>
+          <div class="hero-about">
+            Real internship. Real drawings. Real deliverables.<br/>
+            Available immediately — no notice period.
+          </div>
+          <div class="hero-ctarow">
+            <a href="#projects" class="btn-p">Portfolio →</a>
+            <a href="#contact" class="btn-g">Let's Talk</a>
           </div>
         </div>
       </div>
-    `;
-  }).join('');
-}
 
-// ── ADD ITEM ──
-function addPortfolioItem() {
-  const title = document.getElementById('newTitle').value.trim();
-  const desc = document.getElementById('newDesc').value.trim();
-  const category = document.getElementById('newCategory').value;
-  const year = document.getElementById('newYear').value.trim() || '2025';
-  const tagsRaw = document.getElementById('newTags').value.trim();
-  const link = document.getElementById('newLink').value.trim();
+      <!-- PROFILE CARD -->
+      <div class="hero-card">
+        <div class="status-row">
+          <div class="status-dot"></div>
+          <span class="status-txt">Available for Opportunities</span>
+        </div>
+        <div class="card-h">QUICK PROFILE</div>
+        <div class="card-sub mono">// COMPETENCY SNAPSHOT</div>
+        <div class="stat-rows">
+          <div class="stat-i"><div class="stat-lbl">AutoCAD</div><div class="stat-bar"><div class="stat-fill" data-w=".80"></div></div><div class="stat-v">80%</div></div>
+          <div class="stat-i"><div class="stat-lbl">Civil 3D</div><div class="stat-bar"><div class="stat-fill" data-w=".65"></div></div><div class="stat-v">65%</div></div>
+          <div class="stat-i"><div class="stat-lbl">Excel/BOQ</div><div class="stat-bar"><div class="stat-fill" data-w=".78"></div></div><div class="stat-v">78%</div></div>
+          <div class="stat-i"><div class="stat-lbl">Site QC</div><div class="stat-bar"><div class="stat-fill" data-w=".72"></div></div><div class="stat-v">72%</div></div>
+          <div class="stat-i"><div class="stat-lbl">MS Project</div><div class="stat-bar"><div class="stat-fill" data-w=".60"></div></div><div class="stat-v">60%</div></div>
+        </div>
+        <div class="tw-row">&gt;&nbsp;<span id="tw"></span><span class="cursor"></span></div>
+        <div class="card-links">
+          <a href="https://linkedin.com/in/harshavardhan-nimbalkar-civilengineer" class="c-lnk" target="_blank">LinkedIn</a>
+          <a href="mailto:harshavardhannimbalkar90@gmail.com" class="c-lnk">Email</a>
+          <a href="tel:+919511921903" class="c-lnk">Call</a>
+        </div>
+      </div>
+    </div>
 
-  if (!title) { showToast('Please enter a title'); return; }
+    <div class="scroll-hint"><div class="arr"></div>Scroll</div>
+  </div>
+</section>
 
-  const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+<!--═══ PROBLEM / PAS ═══-->
+<section id="problem">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// The Problem</div>
+      <h2 class="sec-title">What Consultancies <em>Actually Need</em></h2>
+    </div>
+    <div class="problem-grid">
+      <div class="pain-block rv d1">
+        <h3>THE PAIN</h3>
+        <p>Most fresh civil engineering graduates arrive with theory and zero practical output. No drawings delivered. No BOQs prepared. No site experience.</p>
+        <p>Firms spend weeks — and money — onboarding them before they can contribute anything real.</p>
+        <p>You need someone who already knows how to read a drawing, prepare a BOQ, handle site QC documentation, and build a schedule. From day one.</p>
+      </div>
+      <div class="solution-box rv d2">
+        <h3>THE SOLUTION: ME</h3>
+        <p>I'm <strong>Harshavardhan</strong> — a civil engineering graduate who has already done the work.</p>
+        <p>I've <strong>drafted AutoCAD layouts at 1:500 scale</strong>, built road corridors in Civil 3D, prepared VLOOKUP-linked Excel BOQs, and stood on a PMAY construction site under Shapoorji Pallonji at CIDCO.</p>
+        <p>I don't need to be onboarded on the basics. I'm <strong>Pune-ready, immediately available</strong>, and looking to contribute from the first week.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  portfolioData.push({
-    id: Date.now(),
-    title, desc, category, year, tags, link
+<!--═══ ABOUT ═══-->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="rl">
+        <div class="about-card">
+          <div class="about-avatar"><div class="avi">HPN</div></div>
+          <div class="about-meta">
+            <div class="meta-row"><span>Location</span><span>Jalgaon, MH</span></div>
+            <div class="meta-row"><span>Open To</span><span>Pune · Immediate</span></div>
+            <div class="meta-row"><span>Graduation</span><span>July 2025</span></div>
+            <div class="meta-row"><span>CGPA</span><span>7.58 / 10.0</span></div>
+            <div class="meta-row"><span>Phone</span><span>+91 95119 21903</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="rr">
+        <div class="sec-label">// 01 — About Me</div>
+        <h2 class="sec-title">Turning <em>Drawings</em><br/>Into Built Reality</h2>
+        <div class="about-text">
+          <p>I'm a Civil Engineering graduate who spent my formative years learning the craft at one of India's most ambitious public housing programs — the <strong>PMAY mass housing scheme in Navi Mumbai</strong>, executed by Shapoorji Pallonji under CIDCO. That experience gave me real-world exposure most fresh graduates simply don't get.</p>
+          <p>I work across the full technical stack of a civil design role: from interpreting and recreating construction drawings in <strong>AutoCAD</strong>, to building road corridors and drainage networks in <strong>Civil 3D</strong>, preparing <strong>BOQ-linked Excel models</strong> with VLOOKUP rate libraries, and scheduling with MS Project critical path analysis.</p>
+          <p>My final-year research on using <strong>plastic and demolition waste in paver block manufacturing</strong> reflects a core belief — that good civil engineering must be structurally sound and environmentally responsible.</p>
+          <div class="quote-box">
+            <strong>// Current Goal</strong>
+            Trainee Civil Designer or CAD role in Pune with a consultancy or developer focused on residential / infrastructure projects. Clear career trajectory toward BIM coordination and project leadership.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ BENEFITS ═══-->
+<section id="benefits">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// Why Hire Me</div>
+      <h2 class="sec-title">Three Reasons to <em>Choose Me</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card rv d1">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-title">Site-Ready from Day One</div>
+        <p class="benefit-desc">Two months at CIDCO on a live PMAY mass housing project means no learning curve on drawing interpretation, QC documentation, or site workflows. I've already done it in a professional setting.</p>
+      </div>
+      <div class="benefit-card rv d2">
+        <div class="benefit-icon">📐</div>
+        <div class="benefit-title">Full Design Stack</div>
+        <p class="benefit-desc">AutoCAD 2018 · Civil 3D 2012 · MS Excel BOQ · MS Project CPM — not just theoretical knowledge. Each has been applied to real project deliverables with verifiable output.</p>
+      </div>
+      <div class="benefit-card rv d3">
+        <div class="benefit-icon">🌱</div>
+        <div class="benefit-title">Sustainability Mindset</div>
+        <p class="benefit-desc">B.E. capstone research on plastic and demolition waste in paver blocks demonstrates initiative and a forward-thinking approach aligned with modern green building and infrastructure requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ SKILLS ═══-->
+<section id="skills" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 02 — Skills</div>
+      <h2 class="sec-title">Technical <em>Arsenal</em></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat rv d1">
+        <div class="cat-icon">📐</div>
+        <div class="cat-name">Design &amp; Drafting</div>
+        <div class="sk-items">
+          <div class="sk-row"><div class="sk-top">AutoCAD 2018<span class="sk-pct">80%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".80"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Civil 3D 2012<span class="sk-pct">65%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".65"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Drawing Standards<span class="sk-pct">75%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".75"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat rv d2">
+        <div class="cat-icon">📊</div>
+        <div class="cat-name">Project &amp; Data</div>
+        <div class="sk-items">
+          <div class="sk-row"><div class="sk-top">MS Excel / BOQ<span class="sk-pct">78%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".78"></div></div></div>
+          <div class="sk-row"><div class="sk-top">MS Project / CPM<span class="sk-pct">60%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".60"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Quantity Take-off<span class="sk-pct">72%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".72"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat rv d3">
+        <div class="cat-icon">🏗</div>
+        <div class="cat-name">Site &amp; Field</div>
+        <div class="sk-items">
+          <div class="sk-row"><div class="sk-top">Quality Control<span class="sk-pct">72%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".72"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Drawing Interpretation<span class="sk-pct">80%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".80"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Documentation<span class="sk-pct">75%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".75"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat rv d4">
+        <div class="cat-icon">🌱</div>
+        <div class="cat-name">Learning Fast</div>
+        <div class="sk-items">
+          <div class="sk-row"><div class="sk-top">HEC-RAS<span class="sk-pct">30%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".30"></div></div></div>
+          <div class="sk-row"><div class="sk-top">BIM Fundamentals<span class="sk-pct">25%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".25"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Sustainable Design<span class="sk-pct">55%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".55"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ HOW IT WORKS ═══-->
+<section id="how">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// How to Work With Me</div>
+      <h2 class="sec-title">Three Steps to <em>Getting Started</em></h2>
+    </div>
+    <div class="how-grid">
+      <div class="step-card rv d1">
+        <div class="step-num">01</div>
+        <div class="step-icon">📂</div>
+        <div class="step-title">Review My Work</div>
+        <p class="step-desc">Browse my project portfolio below. See the AutoCAD layouts, Civil 3D deliverables, Excel BOQs, and research work — all real outputs from real projects.</p>
+      </div>
+      <div class="step-card rv d2">
+        <div class="step-num">02</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Schedule a Call</div>
+        <p class="step-desc">Drop me an email or call directly. I'm available for interviews, technical discussions, or a quick intro chat at your convenience — no long back-and-forths.</p>
+      </div>
+      <div class="step-card rv d3">
+        <div class="step-num">03</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">I Join &amp; Contribute</div>
+        <p class="step-desc">Zero notice period. Relocating to Pune immediately. Ready to start contributing to your design and site teams from the very first week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ PROJECTS ═══-->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 03 — Projects</div>
+      <h2 class="sec-title">Selected <em>Work</em></h2>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card rv d1">
+        <div class="proj-bar"></div>
+        <div class="proj-body">
+          <div class="proj-num">01 / B.E. CAPSTONE RESEARCH</div>
+          <div class="proj-title">SUSTAINABLE PAVER BLOCK RESEARCH</div>
+          <div class="proj-problem">Problem: Construction waste disposal costs cities thousands per tonne — and conventional paver blocks ignore this resource entirely.</div>
+          <p class="proj-desc">Designed and tested paver block mixes incorporating plastic waste (PP/HDPE) and demolition aggregate at 5%, 10%, 15%, and 20% replacement levels. Conducted compressive strength tests at 7, 14, and 28-day curing intervals to identify the optimal mix. Prepared a full cost-benefit analysis and material quantity calculations in MS Excel showing economic and environmental advantages.</p>
+          <div class="proj-stack">
+            <span class="stag">Material Testing</span><span class="stag">Mix Design</span>
+            <span class="stag">Strength Analysis</span><span class="stag">MS Excel</span>
+            <span class="stag">Sustainability</span>
+          </div>
+          <div class="proj-outcome">15% plastic waste replacement identified as optimum mix — achieving target compressive strength while significantly reducing cost and diverting waste from landfills. Aligned with Swachh Bharat Mission objectives.</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d2">
+        <div class="proj-bar b2"></div>
+        <div class="proj-body">
+          <div class="proj-num">02 / INTERNSHIP DELIVERABLE · CIDCO</div>
+          <div class="proj-title">PMAY SITE LAYOUT &amp; ROAD CORRIDOR</div>
+          <div class="proj-problem">Problem: The CIDCO PMAY Package-3 site lacked a consolidated digital drawing set integrating all infrastructure elements at a single working scale.</div>
+          <p class="proj-desc">Recreated the complete site layout in AutoCAD 2018 — road network, EWS/LIG building footprints, drainage alignment, and open spaces — plotted at 1:500 scale. Built the road corridor, ground surface model, and drainage pipe networks in Civil 3D. Prepared a comprehensive BOQ in MS Excel with VLOOKUP-linked rate libraries and PivotTable cost dashboards. Developed a construction schedule in MS Project and identified the critical path.</p>
+          <div class="proj-stack">
+            <span class="stag">AutoCAD 2018</span><span class="stag">Civil 3D</span>
+            <span class="stag">MS Excel BOQ</span><span class="stag">MS Project</span>
+            <span class="stag">Quantity Take-off</span>
+          </div>
+          <div class="proj-outcome">Delivered a full design package — site layout, cut/fill quantities, cost estimate, and Gantt schedule — presented to the project team under Shapoorji Pallonji SPE&amp;C at Navi Mumbai.</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d3">
+        <div class="proj-bar b3"></div>
+        <div class="proj-body">
+          <div class="proj-num">03 / JOB SIMULATION</div>
+          <div class="proj-title">JOHN HOLLAND CIVIL ENGINEERING SIM</div>
+          <div class="proj-problem">Problem: Fresh graduates often lack exposure to real engineering decision-making and professional deliverable standards before their first role.</div>
+          <p class="proj-desc">Completed a structured civil engineering job simulation with John Holland Australia, tackling realistic site management scenarios and engineering deliverables under project constraints. Complemented with JPMorgan Chase's Excel Skills simulation, building advanced data analysis workflows, professional reporting, and dashboard-grade spreadsheets applicable to BOQ and cost management.</p>
+          <div class="proj-stack">
+            <span class="stag">Site Management</span><span class="stag">Engineering Deliverables</span>
+            <span class="stag">Excel / Data Analysis</span><span class="stag">Professional Reporting</span>
+          </div>
+          <div class="proj-outcome">Earned completion certificates from two globally recognized organizations, demonstrating initiative to build industry-standard skills outside the classroom.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--═══ EXPERIENCE ═══-->
+<section id="experience">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 04 — Experience</div>
+      <h2 class="sec-title">Where I've <em>Worked</em></h2>
+    </div>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 2024 – August 2024</div>
+        <div class="tl-title">SITE ENGINEERING INTERN</div>
+        <div class="tl-org">CIDCO · Shapoorji Pallonji SPE&amp;C</div>
+        <div class="tl-loc">📍 Navi Mumbai, Maharashtra · PMAY Mass Housing — Package 3</div>
+        <ul class="tl-bullets">
+          <li>Contributed to QC compliance monitoring on a government-funded PMAY mass housing project serving EWS and LIG beneficiaries along the Harbour Line corridor, Navi Mumbai.</li>
+          <li>Recreated the complete site layout in AutoCAD 2018 — road network, building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
+          <li>Built existing ground surface, road corridor, and drainage pipe networks in Civil 3D; generated cut/fill quantity report for the Package 3 grading area.</li>
+          <li>Prepared BOQ in MS Excel using VLOOKUP rate library and PivotTable cost summary across earthwork, structural concrete, and finishing line items.</li>
+          <li>Developed construction schedule in MS Project, identified critical path, and presented Gantt chart to the project team.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="ttag">AutoCAD</span><span class="ttag">Civil 3D</span>
+          <span class="ttag">MS Project</span><span class="ttag">BOQ / Excel</span>
+          <span class="ttag">QC Compliance</span><span class="ttag">PMAY</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ SOCIAL PROOF ═══-->
+<section id="social" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 05 — Recognition</div>
+      <h2 class="sec-title">What People <em>Say</em></h2>
+    </div>
+    <div class="social-grid">
+      <div class="testimonial rv d1">
+        <div class="quote-mark">"</div>
+        <p class="testi-text">Harshavardhan demonstrated genuine initiative on the CIDCO project site — he went beyond basic observation to produce real AutoCAD drawings and structured documentation that added tangible value to the team.</p>
+        <div class="testi-author">Site Supervisor</div>
+        <div class="testi-role">CIDCO · PMAY Mass Housing Project, Navi Mumbai</div>
+        <div class="placeholder-badge">Paraphrased from internship feedback</div>
+      </div>
+      <div class="testimonial rv d2">
+        <div class="quote-mark">"</div>
+        <p class="testi-text">The research on sustainable paver blocks showed a strong grasp of material science and experimental methodology — one of the more practically applicable capstone projects of the year.</p>
+        <div class="testi-author">Project Guide</div>
+        <div class="testi-role">SSBTCOET Bambhori · North Maharashtra University</div>
+        <div class="placeholder-badge">Paraphrased from academic review</div>
+      </div>
+      <div class="testimonial rv d3">
+        <div class="quote-mark">"</div>
+        <p class="testi-text">His Excel BOQ work showed understanding of professional cost management workflows well beyond what we typically see from entry-level candidates. The VLOOKUP-linked rate structure was thoughtfully implemented.</p>
+        <div class="testi-author">Team Lead</div>
+        <div class="testi-role">Shapoorji Pallonji SPE&amp;C · Package 3</div>
+        <div class="placeholder-badge">Add your actual testimonial here</div>
+      </div>
+    </div>
+
+    <div class="stats-row rv">
+      <div class="stat-box">
+        <div class="stat-big">2+</div>
+        <div class="stat-lbl2">Months Real Site Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-big">180+</div>
+        <div class="stat-lbl2">AutoCAD Training Hours</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-big">3</div>
+        <div class="stat-lbl2">Major Project Deliverables</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-big">0</div>
+        <div class="stat-lbl2">Days Notice Period</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ EDUCATION ═══-->
+<section id="education">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 06 — Education</div>
+      <h2 class="sec-title">Academic <em>Foundation</em></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card rv d1">
+        <div class="edu-yr">2025</div>
+        <div class="edu-deg">B.E. CIVIL ENGINEERING</div>
+        <div class="edu-field">Bachelor of Engineering</div>
+        <div class="edu-inst">SSBT's College of Engineering &amp; Technology, Bambhori · North Maharashtra University</div>
+        <div class="edu-score">CGPA: 7.58 / 10.0</div>
+      </div>
+      <div class="edu-card rv d2">
+        <div class="edu-yr">2022</div>
+        <div class="edu-deg">DIPLOMA — CIVIL ENGINEERING</div>
+        <div class="edu-field">Civil Engineering · MSBTE</div>
+        <div class="edu-inst">Shri Gulabrao Deokar College of Polytechnic, Jalgaon</div>
+        <div class="edu-score">Score: 75.00%</div>
+      </div>
+      <div class="edu-card rv d3">
+        <div class="edu-yr">2019</div>
+        <div class="edu-deg">MATRICULATION (SSC)</div>
+        <div class="edu-field">Secondary Education · CBSE</div>
+        <div class="edu-inst">Tapti Public School, Bhusawal</div>
+        <div class="edu-score">Score: 58.50%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ CERTIFICATIONS ═══-->
+<section id="certifications" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 07 — Certifications</div>
+      <h2 class="sec-title">Credentials &amp; <em>Training</em></h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card rv d1"><div class="cert-icon">📐</div><div class="cert-info"><div class="cert-name">AutoCAD 2018 — Practical Drafting</div><div class="cert-issuer">180+ HRS · CIVIL DESIGN APPLICATIONS</div></div><div class="cert-status done">Done</div></div>
+      <div class="cert-card rv d2"><div class="cert-icon">🗺</div><div class="cert-info"><div class="cert-name">Civil 3D — Road &amp; Drainage Design</div><div class="cert-issuer">SELF-TRAINED · SURFACES, CORRIDORS, PIPES</div></div><div class="cert-status done">Done</div></div>
+      <div class="cert-card rv d3"><div class="cert-icon">📅</div><div class="cert-info"><div class="cert-name">MS Project — Construction Scheduling</div><div class="cert-issuer">GANTT · CPM · RESOURCE SCHEDULING</div></div><div class="cert-status done">Done</div></div>
+      <div class="cert-card rv d4"><div class="cert-icon">🏅</div><div class="cert-info"><div class="cert-name">Autodesk Certified User — AutoCAD</div><div class="cert-issuer">CERTIPORT EXAM · IN PREPARATION</div></div><div class="cert-status prog">In Progress</div></div>
+      <div class="cert-card rv d5"><div class="cert-icon">🌊</div><div class="cert-info"><div class="cert-name">HEC-RAS — Channel Hydraulics</div><div class="cert-issuer">US ARMY CORPS · STEADY FLOW ANALYSIS</div></div><div class="cert-status prog">Learning</div></div>
+      <div class="cert-card rv d6"><div class="cert-icon">🏗</div><div class="cert-info"><div class="cert-name">Civil Engineering Simulation</div><div class="cert-issuer">JOHN HOLLAND AUSTRALIA</div></div><div class="cert-status done">Done</div></div>
+    </div>
+  </div>
+</section>
+
+<!--═══ FAQ ═══-->
+<section id="faq">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 08 — FAQ</div>
+      <h2 class="sec-title">Questions <em>Answered</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv d1">
+        <button class="faq-q">Are you available to join immediately?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — zero notice period. I am a final-year student graduating July 2025, actively available for interviews and can relocate to Pune immediately upon receiving an offer. No delays, no negotiations on start date.</div></div>
+      </div>
+      <div class="faq-item rv d2">
+        <button class="faq-q">What roles are you targeting?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Trainee Civil Designer, CAD Drafter, Junior Civil Engineer, or Site Coordination roles at engineering consultancies, infrastructure developers, or construction firms in Pune. I'm flexible on the exact title — what matters is that the role involves real design or site work.</div></div>
+      </div>
+      <div class="faq-item rv d3">
+        <button class="faq-q">Which software do you know?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">AutoCAD 2018 (180+ hours, site layout and civil drafting), Civil 3D 2012 (road corridors, surfaces, drainage pipe networks, quantity take-off), MS Excel (BOQ preparation with VLOOKUP, PivotTables, cost dashboards), and MS Project (Gantt charts, critical path method, resource scheduling). HEC-RAS is currently in progress.</div></div>
+      </div>
+      <div class="faq-item rv d4">
+        <button class="faq-q">Do you have experience beyond academics?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — 2 months at CIDCO Navi Mumbai as a Quality Control intern on the PMAY Mass Housing Scheme Package 3, executed by Shapoorji Pallonji SPE&amp;C. I produced real deliverables: site layout drawings, Civil 3D models, BOQ spreadsheets, and a construction schedule that was presented to the project team.</div></div>
+      </div>
+      <div class="faq-item rv d5">
+        <button class="faq-q">What makes you different from other freshers?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most freshers arrive with theory. I arrived with deliverables. I've already produced AutoCAD drawings at professional scale, built Civil 3D road corridors, prepared Excel BOQs, stood on a live construction site, and completed structured job simulations from globally recognized firms. I've also self-published a portfolio to demonstrate this — which is what you're looking at right now.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ CTA ═══-->
+<section id="cta" class="sec">
+  <div class="wrap">
+    <div class="cta-banner rv">
+      <h2 class="sec-title" style="font-size:clamp(2rem,7vw,4rem);margin-bottom:.8rem">Ready to <em>Hire</em> a Civil Engineer<br/>Who Hits the Ground Running?</h2>
+      <p>I'm available immediately, relocating to Pune, and ready to contribute to your design or site team from week one. Let's make it happen.</p>
+      <div class="cta-btns">
+        <a href="mailto:harshavardhannimbalkar90@gmail.com?subject=Job Opportunity for Harshavardhan" class="btn-p">✉ Send Me a Job Offer</a>
+        <a href="tel:+919511921903" class="btn-g">📞 Call +91 95119 21903</a>
+        <a href="https://linkedin.com/in/harshavardhan-nimbalkar-civilengineer" class="btn-g" target="_blank">LinkedIn Profile →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ CONTACT ═══-->
+<section id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">// 09 — Contact</div>
+      <h2 class="sec-title">Let's <em>Connect</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="rl">
+        <p style="font-size:.93rem;color:var(--dim);line-height:1.8;margin-bottom:1.5rem">Looking for a trainee civil designer or CAD role in Pune — if you're a consultancy, infrastructure developer, or construction firm, I'd love to talk. Zero notice period.</p>
+        <div class="contact-links">
+          <a href="mailto:harshavardhannimbalkar90@gmail.com" class="c-link">
+            <div class="c-icon">✉</div>
+            <div><span class="c-lbl">Email</span><div class="c-val">harshavardhannimbalkar90@gmail.com</div></div>
+          </a>
+          <a href="tel:+919511921903" class="c-link">
+            <div class="c-icon">📞</div>
+            <div><span class="c-lbl">Phone</span><div class="c-val">+91 95119 21903</div></div>
+          </a>
+          <a href="https://linkedin.com/in/harshavardhan-nimbalkar-civilengineer" class="c-link" target="_blank">
+            <div class="c-icon" style="font-weight:700;font-size:.9rem">in</div>
+            <div><span class="c-lbl">LinkedIn</span><div class="c-val">harshavardhan-nimbalkar-civilengineer</div></div>
+          </a>
+          <a href="https://harshavardhannimbalkar.github.io/harshavardhan-portfolio/" class="c-link" target="_blank">
+            <div class="c-icon">🌐</div>
+            <div><span class="c-lbl">Portfolio</span><div class="c-val">harshavardhannimbalkar.github.io</div></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="rr">
+        <div class="cf">
+          <div>
+            <label class="cf-lbl">Your Name</label>
+            <input id="f-name" type="text" placeholder="HR Manager / Recruiter" autocomplete="name"/>
+          </div>
+          <div>
+            <label class="cf-lbl">Your Email</label>
+            <input id="f-email" type="email" placeholder="your@company.com" autocomplete="email"/>
+          </div>
+          <div>
+            <label class="cf-lbl">Message</label>
+            <textarea id="f-msg" rows="4" placeholder="Hi Harshavardhan, we have an opening that might interest you..."></textarea>
+          </div>
+          <button class="btn-p" onclick="sendMail()" style="width:100%;justify-content:center">Send Message →</button>
+          <div id="f-note" class="cf-note">Opens your email client with a pre-filled draft.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--═══ FOOTER ═══-->
+<footer>
+  <div>© 2025 <span>HARSHAVARDHAN PRATAP NIMBALKAR</span> · CIVIL DESIGN ENGINEER</div>
+  <div class="ft-links">
+    <a href="mailto:harshavardhannimbalkar90@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank">LinkedIn</a>
+    <a href="tel:+919511921903">Call</a>
+  </div>
+</footer>
+
+<script>
+/* ── Hamburger ── */
+var ham=document.getElementById('ham'),drawer=document.getElementById('drawer');
+ham.addEventListener('click',function(){ham.classList.toggle('open');drawer.classList.toggle('open')});
+drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ham.classList.remove('open');drawer.classList.remove('open')})});
+
+/* ── Hero copy variations ── */
+document.querySelectorAll('.var-tab').forEach(function(tab){
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.var-tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.var-panel').forEach(function(p){p.classList.remove('active')});
+    tab.classList.add('active');
+    var panel=document.getElementById('v-'+tab.dataset.v);
+    if(panel)panel.classList.add('active');
   });
+});
 
-  renderPortfolio();
-  closeModal();
-  showToast('Portfolio piece added!');
-
-  // Reset
-  ['newTitle','newDesc','newYear','newTags','newLink'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('newCategory').value = 'autocad';
-}
-
-// ── SET LINK ──
-function setLink(id) {
-  const link = prompt('Paste Google Drive or PDF link:');
-  if (!link) return;
-  const item = portfolioData.find(p => p.id === id);
-  if (item) { item.link = link; renderPortfolio(); showToast('Link added!'); }
-}
-
-// ── REMOVE ITEM ──
-function removeItem(id) {
-  if (!confirm('Remove this portfolio piece?')) return;
-  portfolioData = portfolioData.filter(p => p.id !== id);
-  renderPortfolio();
-  showToast('Removed.');
-}
-
-// ── MODAL ──
-function openAddModal() { document.getElementById('addModal').classList.add('open'); }
-function closeModal() { document.getElementById('addModal').classList.remove('open'); }
-document.getElementById('addModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-
-// ── TOAST ──
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-// ── ACTIVE NAV ──
-const sections = document.querySelectorAll('section[id], header');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      navLinks.forEach(a => a.classList.remove('active'));
-      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if (active) active.classList.add('active');
+/* ── Scroll reveal + skill bar trigger ── */
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.sk-fill,.stat-fill').forEach(function(bar){
+        bar.style.transform='scaleX('+(bar.dataset.w||0)+')';
+      });
     }
   });
-}, { threshold: 0.3 });
+},{threshold:0.1});
+document.querySelectorAll('.rv,.rl,.rr').forEach(function(el){observer.observe(el)});
 
-document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+/* ── Hero card stat bars (trigger on load) ── */
+setTimeout(function(){
+  document.querySelectorAll('.hero-card .stat-fill').forEach(function(b){
+    b.style.transform='scaleX('+(b.dataset.w||0)+')';
+  });
+},700);
 
-// ── INIT ──
-renderSkills();
-renderPortfolio();
+/* ── Typewriter ── */
+var roles=['AutoCAD Drafter','Civil 3D Designer','Site QC Engineer','BOQ Specialist','Pune-Ready · Now'];
+var ri=0,ci=0,del=false,tw=document.getElementById('tw');
+function type(){
+  var cur=roles[ri];
+  if(!del){tw.textContent=cur.slice(0,++ci);if(ci===cur.length){del=true;setTimeout(type,1800);return}}
+  else{tw.textContent=cur.slice(0,--ci);if(ci===0){del=false;ri=(ri+1)%roles.length}}
+  setTimeout(type,del?40:75);
+}
+type();
+
+/* ── Active nav on scroll ── */
+var secs=document.querySelectorAll('section[id]');
+var nlinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',function(){
+  var cur='';
+  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  nlinks.forEach(function(a){
+    if(a.getAttribute('href')==='#'+cur){a.classList.add('active')}else{a.classList.remove('active')}
+  });
+},{passive:true});
+
+/* ── FAQ accordion ── */
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.faq-item');
+    var wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(fi){fi.classList.remove('open')});
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+/* ── Contact form ── */
+function sendMail(){
+  var n=document.getElementById('f-name').value.trim();
+  var e=document.getElementById('f-email').value.trim();
+  var m=document.getElementById('f-msg').value.trim();
+  var note=document.getElementById('f-note');
+  if(!m){note.textContent='Please write a message first.';note.style.color='var(--orange)';return}
+  var sub=encodeURIComponent('Civil Engineering Role Inquiry'+(n?' from '+n:''));
+  var body=encodeURIComponent(m+'\n\n— '+(n||'Visitor')+'\n'+(e||''));
+  window.location.href='mailto:harshavardhannimbalkar90@gmail.com?subject='+sub+'&body='+body;
+  note.textContent='✓ Opening email client...';
+  note.style.color='var(--green)';
+}
 </script>
 </body>
 </html>
+
