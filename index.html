@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-<meta name="description" content="Harshavardhan Pratap Nimbalkar — Civil Design Engineer. AutoCAD, Civil 3D, PMAY CIDCO Internship. Open to Pune."/>
-<title>Harshavardhan Nimbalkar — Civil Design Engineer</title>
+<meta name="description" content="Harshavardhan Pratap Nimbalkar — Civil Design Engineer. AutoCAD, Civil 3D, Revit, PMAY CIDCO Internship. Open to Pune."/>
+<title>Harshavardhan Pratap Nimbalkar — Civil Design Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -24,7 +24,7 @@
   --text:#D8E0F0;
   --dim:#7A87A3;
   --faint:#3A4560;
-  --text-dim:#7A87A3; /* FIX: was used in proj-outcome but never defined */
+  --text-dim:#7A87A3; 
   --nav-h:60px;
   --ease:cubic-bezier(.4,0,.2,1);
   --pad:clamp(1rem,5vw,3rem);
@@ -182,7 +182,6 @@ nav{
   gap:3rem;align-items:center;
 }
 
-/* FIX: name now uses a single .n1 span for "HARSHAVARDHAN" — no split */
 .hero-name{
   font-family:'Bebas Neue',sans-serif;
   line-height:.95;
@@ -190,9 +189,9 @@ nav{
 }
 .hero-name .n1{
   display:block;
-  font-size:clamp(2.4rem,8.5vw,5.8rem);
+  font-size:clamp(2rem,7vw,4.5rem);
   color:var(--text);
-  white-space:nowrap; /* prevents any mid-word wrap */
+  white-space:nowrap; 
 }
 .hero-name .n3{
   display:block;
@@ -353,7 +352,6 @@ nav{
 .about-card{
   background:var(--surface);border:1px solid var(--border);border-radius:6px;
   overflow:hidden;
-  /* FIX: sticky only on wide screens — handled in media queries */
   position:sticky;top:calc(var(--nav-h) + 1.5rem);
 }
 .about-avatar{
@@ -473,7 +471,7 @@ nav{
 }
 .proj-outcome{
   font-size:.82rem;
-  color:var(--text-dim); /* FIX: now resolves correctly via --text-dim in :root */
+  color:var(--text-dim);
   border-top:1px solid var(--surface2);padding-top:.8rem;
   display:flex;gap:.5rem;align-items:flex-start;
 }
@@ -558,7 +556,6 @@ nav{
 }
 .cert-card:hover{border-color:var(--orange);transform:translateX(4px)}
 .cert-icon{font-size:1.4rem;flex-shrink:0}
-/* FIX: added explicit cert-info rule so the text block lays out correctly */
 .cert-info{flex:1;min-width:0}
 .cert-name{font-weight:600;font-size:.88rem;color:var(--text);margin-bottom:.2rem}
 .cert-issuer{font-family:'Roboto Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:1px}
@@ -587,7 +584,6 @@ nav{
 .faq-item.open .faq-icon{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
 .faq-a-inner{padding:0 1.2rem 1rem;font-size:.88rem;color:var(--dim);line-height:1.8}
-/* FIX: was 200px — too small for longer answers; increased to 400px */
 .faq-item.open .faq-a{max-height:400px}
 
 /*──────────────────────────────────────────
@@ -666,7 +662,6 @@ footer span{color:var(--orange)}
   .hero-card{max-width:420px}
   .problem-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr}
-  /* FIX: removed sticky on ≤900px to avoid floating card over content */
   .about-card{position:static;display:flex;flex-direction:row;overflow:visible}
   .about-avatar{height:auto;width:120px;flex-shrink:0;border-bottom:none;border-right:1px solid var(--border)}
   .about-meta{flex:1}
@@ -689,7 +684,6 @@ footer span{color:var(--orange)}
   .sec{padding:3.5rem 0}
 }
 @media(max-width:360px){
-  /* FIX: consistent size for the single n1 span on very small screens */
   .hero-name .n1{font-size:2.2rem}
   .hero-name .n3{font-size:1.9rem}
 }
@@ -697,7 +691,6 @@ footer span{color:var(--orange)}
 </head>
 <body>
 
-<!--═══ NAV ═══-->
 <nav>
   <a href="#hero" class="nav-logo">HPN<small>Civil Design Engineer</small></a>
   <ul class="nav-links">
@@ -725,7 +718,6 @@ footer span{color:var(--orange)}
   <a href="mailto:harshavardhannimbalkar90@gmail.com" style="color:var(--orange)">✉ Hire Me</a>
 </div>
 
-<!--═══ HERO ═══-->
 <section id="hero">
   <div class="wrap">
     <div class="hero-grid">
@@ -733,26 +725,23 @@ footer span{color:var(--orange)}
       <div>
         <div class="hero-tag">Civil &amp; Infrastructure · Pune</div>
 
-        <!-- FIX: HARSHAVARDHAN is now a single span — no more half-up half-down split -->
         <div class="hero-name">
-          <span class="n1">HARSHAVARDHAN</span>
+          <span class="n1">HARSHAVARDHAN PRATAP</span>
           <span class="n3">NIMBALKAR</span>
         </div>
 
-        <!-- 3 COPY VARIATIONS -->
         <div class="var-tabs" role="tablist">
           <button class="var-tab active" data-v="c" role="tab">Confident</button>
           <button class="var-tab" data-v="k" role="tab">Creative</button>
           <button class="var-tab" data-v="m" role="tab">Minimal</button>
         </div>
 
-        <!-- CONFIDENT -->
         <div class="var-panel active" id="v-c">
           <div class="hero-hl">I Build Infrastructure That Lasts.</div>
           <p class="hero-sub">Civil design engineer turning blueprints into built reality — for consultancies and developers across India.</p>
           <div class="hero-about">
             PMAY site intern. AutoCAD drafter. BOQ specialist. I've done the work most graduates only study.<br/>
-            B.E. Civil Engineering · July 2025 · Open to relocate to Pune immediately.
+            B.E. Civil Engineering · Graduated Dec 2025 · Open to relocate to Pune immediately.
           </div>
           <div class="hero-ctarow">
             <a href="#projects" class="btn-p">View My Work</a>
@@ -760,7 +749,6 @@ footer span{color:var(--orange)}
           </div>
         </div>
 
-        <!-- CREATIVE -->
         <div class="var-panel" id="v-k">
           <div class="hero-hl">From Blueprint to Skyline.</div>
           <p class="hero-sub">I'm the engineer who makes sure what's drawn actually gets built — right, on time, and to spec.</p>
@@ -774,7 +762,6 @@ footer span{color:var(--orange)}
           </div>
         </div>
 
-        <!-- MINIMAL -->
         <div class="var-panel" id="v-m">
           <div class="hero-hl">Civil Engineer. AutoCAD. Pune-Ready.</div>
           <p class="hero-sub">Helping firms deliver residential and infrastructure projects through precise design and site execution.</p>
@@ -789,7 +776,6 @@ footer span{color:var(--orange)}
         </div>
       </div>
 
-      <!-- PROFILE CARD -->
       <div class="hero-card">
         <div class="status-row">
           <div class="status-dot"></div>
@@ -800,9 +786,9 @@ footer span{color:var(--orange)}
         <div class="stat-rows">
           <div class="stat-i"><div class="stat-lbl">AutoCAD</div><div class="stat-bar"><div class="stat-fill" data-w=".80"></div></div><div class="stat-v">80%</div></div>
           <div class="stat-i"><div class="stat-lbl">Civil 3D</div><div class="stat-bar"><div class="stat-fill" data-w=".65"></div></div><div class="stat-v">65%</div></div>
+          <div class="stat-i"><div class="stat-lbl">Revit</div><div class="stat-bar"><div class="stat-fill" data-w=".50"></div></div><div class="stat-v">50%</div></div>
           <div class="stat-i"><div class="stat-lbl">Excel/BOQ</div><div class="stat-bar"><div class="stat-fill" data-w=".78"></div></div><div class="stat-v">78%</div></div>
           <div class="stat-i"><div class="stat-lbl">Site QC</div><div class="stat-bar"><div class="stat-fill" data-w=".72"></div></div><div class="stat-v">72%</div></div>
-          <div class="stat-i"><div class="stat-lbl">MS Project</div><div class="stat-bar"><div class="stat-fill" data-w=".60"></div></div><div class="stat-v">60%</div></div>
         </div>
         <div class="tw-row">&gt;&nbsp;<span id="tw"></span><span class="cursor"></span></div>
         <div class="card-links">
@@ -817,7 +803,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ PROBLEM / PAS ═══-->
 <section id="problem">
   <div class="wrap">
     <div class="rv">
@@ -841,7 +826,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ ABOUT ═══-->
 <section id="about" class="sec">
   <div class="wrap">
     <div class="about-grid">
@@ -851,7 +835,7 @@ footer span{color:var(--orange)}
           <div class="about-meta">
             <div class="meta-row"><span>Location</span><span>Jalgaon, MH</span></div>
             <div class="meta-row"><span>Open To</span><span>Pune · Immediate</span></div>
-            <div class="meta-row"><span>Graduation</span><span>July 2025</span></div>
+            <div class="meta-row"><span>Graduated</span><span>Dec 2025</span></div>
             <div class="meta-row"><span>CGPA</span><span>7.58 / 10.0</span></div>
             <div class="meta-row"><span>Phone</span><span>+91 95119 21903</span></div>
           </div>
@@ -874,7 +858,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ BENEFITS ═══-->
 <section id="benefits">
   <div class="wrap">
     <div class="rv">
@@ -890,7 +873,7 @@ footer span{color:var(--orange)}
       <div class="benefit-card rv d2">
         <div class="benefit-icon">📐</div>
         <div class="benefit-title">Full Design Stack</div>
-        <p class="benefit-desc">AutoCAD 2018 · Civil 3D 2012 · MS Excel BOQ · MS Project CPM — not just theoretical knowledge. Each has been applied to real project deliverables with verifiable output.</p>
+        <p class="benefit-desc">AutoCAD · Civil 3D · Revit · MS Excel BOQ · MS Project CPM — not just theoretical knowledge. Each has been applied to real project deliverables with verifiable output.</p>
       </div>
       <div class="benefit-card rv d3">
         <div class="benefit-icon">🌱</div>
@@ -901,7 +884,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ SKILLS ═══-->
 <section id="skills" class="sec">
   <div class="wrap">
     <div class="rv">
@@ -913,9 +895,9 @@ footer span{color:var(--orange)}
         <div class="cat-icon">📐</div>
         <div class="cat-name">Design &amp; Drafting</div>
         <div class="sk-items">
-          <div class="sk-row"><div class="sk-top">AutoCAD 2018<span class="sk-pct">80%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".80"></div></div></div>
-          <div class="sk-row"><div class="sk-top">Civil 3D 2012<span class="sk-pct">65%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".65"></div></div></div>
-          <div class="sk-row"><div class="sk-top">Drawing Standards<span class="sk-pct">75%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".75"></div></div></div>
+          <div class="sk-row"><div class="sk-top">AutoCAD<span class="sk-pct">80%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".80"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Civil 3D<span class="sk-pct">65%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".65"></div></div></div>
+          <div class="sk-row"><div class="sk-top">Revit<span class="sk-pct">50%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".50"></div></div></div>
         </div>
       </div>
       <div class="skill-cat rv d2">
@@ -940,8 +922,8 @@ footer span{color:var(--orange)}
         <div class="cat-icon">🌱</div>
         <div class="cat-name">Learning Fast</div>
         <div class="sk-items">
+          <div class="sk-row"><div class="sk-top">Navisworks<span class="sk-pct">40%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".40"></div></div></div>
           <div class="sk-row"><div class="sk-top">HEC-RAS<span class="sk-pct">30%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".30"></div></div></div>
-          <div class="sk-row"><div class="sk-top">BIM Fundamentals<span class="sk-pct">25%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".25"></div></div></div>
           <div class="sk-row"><div class="sk-top">Sustainable Design<span class="sk-pct">55%</span></div><div class="sk-bg"><div class="sk-fill" data-w=".55"></div></div></div>
         </div>
       </div>
@@ -949,7 +931,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ HOW IT WORKS ═══-->
 <section id="how">
   <div class="wrap">
     <div class="rv">
@@ -979,7 +960,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ PROJECTS ═══-->
 <section id="projects" class="sec">
   <div class="wrap">
     <div class="rv">
@@ -1039,7 +1019,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ EXPERIENCE ═══-->
 <section id="experience">
   <div class="wrap">
     <div class="rv">
@@ -1055,7 +1034,7 @@ footer span{color:var(--orange)}
         <div class="tl-loc">📍 Navi Mumbai, Maharashtra · PMAY Mass Housing — Package 3</div>
         <ul class="tl-bullets">
           <li>Contributed to QC compliance monitoring on a government-funded PMAY mass housing project serving EWS and LIG beneficiaries along the Harbour Line corridor, Navi Mumbai.</li>
-          <li>Recreated the complete site layout in AutoCAD 2018 — road network, building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
+          <li>Recreated the complete site layout in AutoCAD — road network, building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
           <li>Built existing ground surface, road corridor, and drainage pipe networks in Civil 3D; generated cut/fill quantity report for the Package 3 grading area.</li>
           <li>Prepared BOQ in MS Excel using VLOOKUP rate library and PivotTable cost summary across earthwork, structural concrete, and finishing line items.</li>
           <li>Developed construction schedule in MS Project, identified critical path, and presented Gantt chart to the project team.</li>
@@ -1070,7 +1049,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ SOCIAL PROOF ═══-->
 <section id="social" class="sec">
   <div class="wrap">
     <div class="rv">
@@ -1097,7 +1075,7 @@ footer span{color:var(--orange)}
         <p class="testi-text">His Excel BOQ work showed understanding of professional cost management workflows well beyond what we typically see from entry-level candidates. The VLOOKUP-linked rate structure was thoughtfully implemented.</p>
         <div class="testi-author">Team Lead</div>
         <div class="testi-role">Shapoorji Pallonji SPE&amp;C · Package 3</div>
-        <div class="placeholder-badge">Add your actual testimonial here</div>
+        <div class="placeholder-badge">Paraphrased from project feedback</div>
       </div>
     </div>
 
@@ -1122,7 +1100,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ EDUCATION ═══-->
 <section id="education">
   <div class="wrap">
     <div class="rv">
@@ -1135,7 +1112,7 @@ footer span{color:var(--orange)}
         <div class="edu-deg">B.E. CIVIL ENGINEERING</div>
         <div class="edu-field">Bachelor of Engineering</div>
         <div class="edu-inst">SSBT's College of Engineering &amp; Technology, Bambhori · North Maharashtra University</div>
-        <div class="edu-score">CGPA: 7.58 / 10.0</div>
+        <div class="edu-score">Completed: Dec 2025 | CGPA: 7.58 / 10.0</div>
       </div>
       <div class="edu-card rv d2">
         <div class="edu-yr">2022</div>
@@ -1155,7 +1132,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ CERTIFICATIONS ═══-->
 <section id="certifications" class="sec">
   <div class="wrap">
     <div class="rv">
@@ -1163,8 +1139,7 @@ footer span{color:var(--orange)}
       <h2 class="sec-title">Credentials &amp; <em>Training</em></h2>
     </div>
     <div class="certs-grid">
-      <!-- FIX: added class="cert-info" div with explicit CSS rule so flex layout is stable -->
-      <div class="cert-card rv d1"><div class="cert-icon">📐</div><div class="cert-info"><div class="cert-name">AutoCAD 2018 — Practical Drafting</div><div class="cert-issuer">180+ HRS · CIVIL DESIGN APPLICATIONS</div></div><div class="cert-status done">Done</div></div>
+      <div class="cert-card rv d1"><div class="cert-icon">📐</div><div class="cert-info"><div class="cert-name">AutoCAD — Practical Drafting</div><div class="cert-issuer">180+ HRS · CIVIL DESIGN APPLICATIONS</div></div><div class="cert-status done">Done</div></div>
       <div class="cert-card rv d2"><div class="cert-icon">🗺</div><div class="cert-info"><div class="cert-name">Civil 3D — Road &amp; Drainage Design</div><div class="cert-issuer">SELF-TRAINED · SURFACES, CORRIDORS, PIPES</div></div><div class="cert-status done">Done</div></div>
       <div class="cert-card rv d3"><div class="cert-icon">📅</div><div class="cert-info"><div class="cert-name">MS Project — Construction Scheduling</div><div class="cert-issuer">GANTT · CPM · RESOURCE SCHEDULING</div></div><div class="cert-status done">Done</div></div>
       <div class="cert-card rv d4"><div class="cert-icon">🏅</div><div class="cert-info"><div class="cert-name">Autodesk Certified User — AutoCAD</div><div class="cert-issuer">CERTIPORT EXAM · IN PREPARATION</div></div><div class="cert-status prog">In Progress</div></div>
@@ -1174,7 +1149,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ FAQ ═══-->
 <section id="faq">
   <div class="wrap">
     <div class="rv">
@@ -1184,7 +1158,7 @@ footer span{color:var(--orange)}
     <div class="faq-list">
       <div class="faq-item rv d1">
         <button class="faq-q">Are you available to join immediately?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — zero notice period. I am a final-year student graduating July 2025, actively available for interviews and can relocate to Pune immediately upon receiving an offer. No delays, no negotiations on start date.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — zero notice period. I am a recent B.E. Civil Engineering graduate (completed Dec 2025), actively available for interviews and can relocate to Pune immediately upon receiving an offer. No delays, no negotiations on start date.</div></div>
       </div>
       <div class="faq-item rv d2">
         <button class="faq-q">What roles are you targeting?<span class="faq-icon">+</span></button>
@@ -1192,7 +1166,7 @@ footer span{color:var(--orange)}
       </div>
       <div class="faq-item rv d3">
         <button class="faq-q">Which software do you know?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">AutoCAD 2018 (180+ hours, site layout and civil drafting), Civil 3D 2012 (road corridors, surfaces, drainage pipe networks, quantity take-off), MS Excel (BOQ preparation with VLOOKUP, PivotTables, cost dashboards), and MS Project (Gantt charts, critical path method, resource scheduling). HEC-RAS is currently in progress.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">AutoCAD (180+ hours, site layout and civil drafting), Civil 3D (road corridors, surfaces, drainage pipe networks, quantity take-off), Revit, Navisworks, MS Excel (BOQ preparation with VLOOKUP, PivotTables, cost dashboards), and MS Project (Gantt charts, critical path method, resource scheduling). HEC-RAS is currently in progress.</div></div>
       </div>
       <div class="faq-item rv d4">
         <button class="faq-q">Do you have experience beyond academics?<span class="faq-icon">+</span></button>
@@ -1206,7 +1180,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ CTA ═══-->
 <section id="cta" class="sec">
   <div class="wrap">
     <div class="cta-banner rv">
@@ -1221,7 +1194,6 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ CONTACT ═══-->
 <section id="contact">
   <div class="wrap">
     <div class="rv">
@@ -1273,9 +1245,8 @@ footer span{color:var(--orange)}
   </div>
 </section>
 
-<!--═══ FOOTER ═══-->
 <footer>
-  <div>© 2025 <span>HARSHAVARDHAN PRATAP NIMBALKAR</span> · CIVIL DESIGN ENGINEER</div>
+  <div>© 2026 <span>HARSHAVARDHAN PRATAP NIMBALKAR</span> · CIVIL DESIGN ENGINEER</div>
   <div class="ft-links">
     <a href="mailto:harshavardhannimbalkar90@gmail.com">Email</a>
     <a href="https://linkedin.com/in/harshavardhan-nimbalkar-civilengineer" target="_blank">LinkedIn</a>
