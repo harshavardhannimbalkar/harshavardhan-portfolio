@@ -361,17 +361,19 @@ nav{
   position:sticky;top:calc(var(--nav-h) + 1.5rem);
 }
 .about-avatar{
-  height:200px;background:linear-gradient(135deg,var(--surface2),var(--bg));
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Perfect for professional portraits without squashing */
+  background:linear-gradient(135deg,var(--surface2),var(--bg));
   display:flex;align-items:center;justify-content:center;
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
 }
 .about-avatar::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(0,201,255,.06))}
 .about-avatar img{
-  width:100%;height:100%;object-fit:cover;z-index:1;
+  width:100%;height:100%;object-fit:cover;object-position:top center;z-index:1;
 }
 .avi{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:3px;color:var(--orange);opacity:.5;z-index:1}
-.about-meta{padding:1.3rem}
+.about-meta{padding:1.3rem; padding-bottom: 0.8rem;}
 .meta-row{
   display:flex;justify-content:space-between;align-items:center;
   font-family:'Roboto Mono',monospace;font-size:.68rem;letter-spacing:1px;
@@ -380,6 +382,9 @@ nav{
 .meta-row:last-child{border-bottom:none}
 .meta-row span:first-child{color:var(--faint)}
 .meta-row span:last-child{color:var(--text)}
+.about-resume-wrap {
+  padding: 0 1.3rem 1.3rem 1.3rem;
+}
 .about-text p{font-size:.95rem;color:var(--dim);line-height:1.85;margin-bottom:1.1rem}
 .about-text p strong{color:var(--orange)}
 .quote-box{
@@ -671,9 +676,8 @@ footer span{color:var(--orange)}
   .hero-card{max-width:420px}
   .problem-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr}
-  .about-card{position:static;display:flex;flex-direction:row;overflow:visible}
-  .about-avatar{height:auto;width:120px;flex-shrink:0;border-bottom:none;border-right:1px solid var(--border)}
-  .about-meta{flex:1}
+  .about-card{position:static;display:flex;flex-direction:row;overflow:visible;align-items:stretch;}
+  .about-avatar{width:160px;aspect-ratio:auto;flex-shrink:0;border-bottom:none;border-right:1px solid var(--border)}
   .benefits-grid{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -684,7 +688,7 @@ footer span{color:var(--orange)}
   .ham{display:flex}
   .hero-grid{gap:2rem}
   .about-card{flex-direction:column}
-  .about-avatar{width:100%;height:120px;border-right:none;border-bottom:1px solid var(--border)}
+  .about-avatar{width:100%;aspect-ratio:3/4;border-right:none;border-bottom:1px solid var(--border)}
   .benefits-grid{grid-template-columns:1fr}
   .hero-ctarow{flex-direction:column}
   .btn-p,.btn-g{justify-content:center}
@@ -713,6 +717,7 @@ footer span{color:var(--orange)}
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" download style="color:var(--cyan); border-bottom: 1px dashed var(--cyan);">Resume PDF</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:harshavardhannimbalkar90@gmail.com" class="nav-hire">Hire Me</a>
@@ -728,6 +733,7 @@ footer span{color:var(--orange)}
   <a href="#experience">Experience</a>
   <a href="#education">Education</a>
   <a href="#faq">FAQ</a>
+  <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" download style="color:var(--cyan)">📄 Download Resume</a>
   <a href="#contact">Contact</a>
   <a href="mailto:harshavardhannimbalkar90@gmail.com" style="color:var(--orange)">✉ Hire Me</a>
 </div>
@@ -759,7 +765,7 @@ footer span{color:var(--orange)}
           </div>
           <div class="hero-ctarow">
             <a href="#projects" class="btn-p">View My Work</a>
-            <a href="#contact" class="btn-g">Hire Me →</a>
+            <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" class="btn-g" style="border-color:var(--cyan);color:var(--cyan)" download>📄 Download Resume</a>
           </div>
         </div>
 
@@ -772,7 +778,7 @@ footer span{color:var(--orange)}
           </div>
           <div class="hero-ctarow">
             <a href="#projects" class="btn-p">See My Projects</a>
-            <a href="#contact" class="btn-g">Get In Touch →</a>
+            <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" class="btn-g" style="border-color:var(--cyan);color:var(--cyan)" download>📄 Download Resume</a>
           </div>
         </div>
 
@@ -785,7 +791,7 @@ footer span{color:var(--orange)}
           </div>
           <div class="hero-ctarow">
             <a href="#projects" class="btn-p">Portfolio →</a>
-            <a href="#contact" class="btn-g">Let's Talk</a>
+            <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" class="btn-g" style="border-color:var(--cyan);color:var(--cyan)" download>📄 Download Resume</a>
           </div>
         </div>
       </div>
@@ -854,6 +860,9 @@ footer span{color:var(--orange)}
             <div class="meta-row"><span>Graduated</span><span>Dec 2025</span></div>
             <div class="meta-row"><span>CGPA</span><span>7.58 / 10.0</span></div>
             <div class="meta-row"><span>Phone</span><span>+91 95119 21903</span></div>
+          </div>
+          <div class="about-resume-wrap">
+             <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" class="btn-p" style="width: 100%; justify-content: center;" download>📄 DOWNLOAD RESUME</a>
           </div>
         </div>
       </div>
@@ -1052,7 +1061,7 @@ footer span{color:var(--orange)}
           <li>Contributed to QC compliance monitoring on a government-funded PMAY mass housing project serving EWS and LIG beneficiaries along the Harbour Line corridor, Navi Mumbai.</li>
           <li>Recreated the complete site layout in AutoCAD — road network, building footprints, drainage alignment, and open spaces — plotted at 1:500 scale.</li>
           <li>Built existing ground surface, road corridor, and drainage pipe networks in Civil 3D; generated cut/fill quantity report for the Package 3 grading area.</li>
-          <li>Prepared BOQ in MS Excel using VLOOKUP rate library and PivotTable cost summary across earthwork, structural concrete, and finishing line items.</li>
+          <li>Developed BOQ in MS Excel using VLOOKUP rate library and PivotTable cost summary across earthwork, structural concrete, and finishing line items.</li>
           <li>Developed construction schedule in MS Project, identified critical path, and presented Gantt chart to the project team.</li>
         </ul>
         <div class="tl-tags">
@@ -1232,9 +1241,9 @@ footer span{color:var(--orange)}
             <div class="c-icon" style="font-weight:700;font-size:.9rem">in</div>
             <div><span class="c-lbl">LinkedIn</span><div class="c-val">harshavardhan-nimbalkar-civilengineer</div></div>
           </a>
-          <a href="https://harshavardhannimbalkar.github.io/harshavardhan-portfolio/" class="c-link" target="_blank">
-            <div class="c-icon">🌐</div>
-            <div><span class="c-lbl">Portfolio</span><div class="c-val">harshavardhannimbalkar.github.io</div></div>
+          <a href="HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf" class="c-link" download>
+            <div class="c-icon">📄</div>
+            <div><span class="c-lbl">Download Resume</span><div class="c-val">HARSHAVARDHAN PRATAP NIMBALKAR (resume).pdf</div></div>
           </a>
         </div>
       </div>
