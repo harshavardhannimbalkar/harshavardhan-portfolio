@@ -93,13 +93,19 @@ nav{
   z-index:200;
 }
 .nav-logo{
+  display:flex;align-items:center;gap:10px;
   font-family:'Bebas Neue',sans-serif;
   font-size:1.3rem;letter-spacing:2px;
   color:var(--orange);
   white-space:nowrap;
 }
+.nav-logo-img{
+  width:38px;height:38px;border-radius:50%;
+  border:2px solid var(--orange);
+  object-fit:cover;
+}
+.nav-logo-text{display:flex;flex-direction:column}
 .nav-logo small{
-  display:block;
   font-family:'Roboto Mono',monospace;
   font-size:.6rem;letter-spacing:1px;
   color:var(--dim);margin-top:-4px;
@@ -361,6 +367,9 @@ nav{
   position:relative;overflow:hidden;
 }
 .about-avatar::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(0,201,255,.06))}
+.about-avatar img{
+  width:100%;height:100%;object-fit:cover;z-index:1;
+}
 .avi{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:3px;color:var(--orange);opacity:.5;z-index:1}
 .about-meta{padding:1.3rem}
 .meta-row{
@@ -692,7 +701,12 @@ footer span{color:var(--orange)}
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">HPN<small>Civil Design Engineer</small></a>
+  <a href="#hero" class="nav-logo">
+    <img src="profile-photo.jpg" alt="Harshavardhan Nimbalkar" class="nav-logo-img"/>
+    <div class="nav-logo-text">
+      HPN<small>Civil Design Engineer</small>
+    </div>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -831,7 +845,9 @@ footer span{color:var(--orange)}
     <div class="about-grid">
       <div class="rl">
         <div class="about-card">
-          <div class="about-avatar"><div class="avi">HPN</div></div>
+          <div class="about-avatar">
+            <img src="profile-photo.jpg" alt="Harshavardhan Pratap Nimbalkar"/>
+          </div>
           <div class="about-meta">
             <div class="meta-row"><span>Location</span><span>Jalgaon, MH</span></div>
             <div class="meta-row"><span>Open To</span><span>Pune · Immediate</span></div>
